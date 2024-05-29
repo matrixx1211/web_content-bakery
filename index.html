@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content Bakery</title>
+  </head>
+  <body>
+    <span id="cursor">
+        <span id="top" class="cursor-part"></span>
+        <span id="right" class="cursor-part"></span>
+        <span id="bottom" class="cursor-part"></span>
+        <span id="left" class="cursor-part"></span>
+    </span>
+
+    <!--Hlavička-->
+    <header class="header">
+      <img class="logo" src="/logo_CB.svg" alt="logo" />
+      <button class="language_selector">CZ</button>
+    </header>
+
+    <!--Navigace-->
+    <nav class="navigation">
+      <div class="nav-item">
+        <a href="#intro" class="nav-link nav-link-active">INTRO</a>
+        <span class="nav-link-page">01</span>
+      </div>
+      <div class="nav-item">
+        <a href="#whoweare" class="nav-link">WHO WE ARE</a>
+        <span class="nav-link-page">02</span>
+      </div>
+      <div class="nav-item">
+        <a href="#whatwedo" class="nav-link">WHAT WE DO</a>
+        <span class="nav-link-page">03</span>
+      </div>
+      <div class="nav-item">
+        <a href="#ourtools" class="nav-link">OUR TOOLS</a>
+        <span class="nav-link-page">04</span>
+      </div>
+      <div class="nav-item">
+        <a href="#contact" class="nav-link">CONTACT</a>
+        <span class="nav-link-page">05</span>
+      </div>
+    </nav>
+
+    <!--Sekce-->
+    <div class="sections">
+      <section id="intro" class="content">
+        <div class="page-indicator">
+          <span class="page-number">01</span>
+        </div>
+
+        <div class="intro-text">
+          <span class="intro-text-line">WE ARE</span>
+          <span class="intro-text-line">MODERN</span>
+          <span class="intro-text-line">DIGITAL</span>
+          <span class="intro-text-line">FACTORY</span>
+          <span class="intro-text-line">THAT HELPS</span>
+          <span class="intro-text-line">TO OPTIMIZE,</span>
+          <span class="intro-text-line">MODERNIZE</span>
+          <span class="intro-text-line">AND GROW.</span>
+        </div>
+      </section>
+
+      <section class="transition"></section>
+      <section id="whoweare" class="content"></section>
+      <section id="whatwedo" class="content"></section>
+      <section id="ourtools" class="content"></section>
+      <section id="contact" class="content"></section>
+    </div>
+
+    <!-- Skripty -->
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

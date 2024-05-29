@@ -1,0 +1,26 @@
+@import "global";
+
+body {
+  .header {
+    position: absolute;
+    height: var(--header-height);
+    width: 100vw;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 var(--spacing-full);
+    @include font_area_400;
+
+    .logo {
+      height: 100%;
+    }
+
+    .language_selector {
+      height: 24px;
+      border: 0;
+      background: transparent;
+      color: var(--content-text-color);
+    }
+  }
+}
