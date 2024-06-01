@@ -1,0 +1,44 @@
+@import "global";
+
+body {
+  .content {
+    .section {
+      position: relative;
+
+      .page-indicator {
+        width: 60px;
+        position: absolute;
+        top: 150px;
+        border-bottom: 1px solid;
+        @include font_area_600;
+
+        .page-number {
+          float: right;
+          padding-bottom: var(--spacing-quarter);
+        }
+      }
+    }
+
+    .transition {
+    }
+  }
+
+  #intro {
+    .intro-text {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+
+      span {
+        @include font_nimbus_900;
+        font-size: 64px;
+        line-height: 60px;
+        letter-spacing: 8px;
+        display: inline-block;
+      }
+    }
+  }
+}

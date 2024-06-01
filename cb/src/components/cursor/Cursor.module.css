@@ -1,0 +1,49 @@
+/* TODO: ODSTRANIT nejspíš Styly kurzoru -- nejspíš zbytečné */
+.cursor {
+  position: fixed;
+  z-index: 1000;
+  width: var(--cursor-width);
+  height: var(--cursor-height);
+  pointer-events: none;
+  mix-blend-mode: difference;
+}
+
+.top,
+.bottom,
+.left,
+.right {
+  position: absolute;
+  background-color: var(--cursor-color);
+  border-radius: var(--border-radius) 0 var(--border-radius) 0;
+  /*border: 1px solid var(--cursor-border-color);*/
+}
+
+.top,
+.bottom {
+  width: var(--cursor-thickness);
+  height: var(--cursor-length);
+  left: var(--cursor-x-center);
+}
+
+.right,
+.left {
+  height: var(--cursor-thickness);
+  width: var(--cursor-length);
+  top: var(--cursor-y-center);
+}
+
+.top {
+  top: 0;
+}
+
+.bottom {
+  bottom: 0;
+}
+
+.right {
+  right: 0;
+}
+
+.left {
+  left: 0;
+}

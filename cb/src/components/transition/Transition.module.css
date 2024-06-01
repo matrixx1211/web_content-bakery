@@ -1,0 +1,16 @@
+.transitionContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pageNumber {
+  font-size: 32px;
+  line-height: 64px;
+  padding: 32px 16px 0 0;
+}
+
+.pageTitle {
+  font-size: 64px;
+  line-height: 64px;
+}

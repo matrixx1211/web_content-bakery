@@ -1,0 +1,82 @@
+@import url("https://use.typekit.net/sjy7wus.css");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  cursor: none;
+}
+
+body {
+  background-color: var(--background);
+  width: 100%;
+}
+
+:root {
+  --background: #000000ff;
+  --content-background: #000000ff;
+  --content-text-color: #ffffffff;
+  --content-text-outline-background: #000000ff;
+  --content-text-outline-color: #ffffffff;
+  --transition-background: #ffffffff;
+  --transition-text-color: #000000ff;
+  --nav-text-color: #ffffffff;
+  --nav-active-crossed-color: #ff0000ff;
+  --border-color: #ffffffff;
+  --cursor-color: #ffffffff;
+  --cursor-border-color: #000000ff;
+
+  --spacing-double: 32px;
+  --spacing-full: 16px;
+  --spacing-half: 8px;
+  --spacing-quarter: 4px;
+  --header-height: 80px;
+  --nav-y-offset: 100px;
+  --border-radius: 8px;
+  --cursor-width: 24px;
+  --cursor-height: 24px;
+  --cursor-thickness: 3px;
+  --cursor-length: 8px;
+  --cursor-x-center: calc((var(--cursor-width) / 2) - (var(--cursor-thickness) / 2));
+  --cursor-y-center: calc((var(--cursor-height) / 2) - (var(--cursor-thickness) / 2));
+  --circle-size: 88px;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.area400 {
+  font-family: area-normal, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.area600 {
+  font-family: area-normal, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.nimbus900 {
+  font-family: "nimbus-sans-extended", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+/* Styly k sekcím */
+section {
+  width: 100vw;
+  height: 100vh;
+  overflow: visible;
+}
+
+.contentContainer {
+  background-color: var(--content-background);
+  color: var(--content-text-color);
+}
+
+.transitionContainer {
+  background-color: var(--transition-background);
+  color: var(--transition-text-color);
+}
