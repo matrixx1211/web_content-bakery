@@ -1,6 +1,6 @@
-.navigation {
+.navigationContainer {
   grid-area: navigation;
-  position: fixed;
+  position: absolute;
   right: 0;
   top: var(--nav-y-offset);
   z-index: 10;

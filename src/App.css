@@ -1,11 +1,11 @@
+@charset "UTF-8";
 @import url("https://use.typekit.net/sjy7wus.css");
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   overflow: hidden;
-  cursor: none;
+  /*cursor: none;*/
 }
 
 body {
@@ -26,7 +26,6 @@ body {
   --border-color: #ffffffff;
   --cursor-color: #ffffffff;
   --cursor-border-color: #000000ff;
-
   --spacing-double: 32px;
   --spacing-full: 16px;
   --spacing-half: 8px;
@@ -41,11 +40,11 @@ body {
   --cursor-x-center: calc((var(--cursor-width) / 2) - (var(--cursor-thickness) / 2));
   --cursor-y-center: calc((var(--cursor-height) / 2) - (var(--cursor-thickness) / 2));
   --circle-size: 88px;
-
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* TODO: předělat všude na include a použít mixin  */
 .area400 {
   font-family: area-normal, sans-serif;
   font-weight: 400;
@@ -74,9 +73,14 @@ section {
 .contentContainer {
   background-color: var(--content-background);
   color: var(--content-text-color);
+  position: relative;
 }
 
 .transitionContainer {
   background-color: var(--transition-background);
   color: var(--transition-text-color);
 }
+
+/* MIXINY */
+
+/*# sourceMappingURL=App.css.map */

@@ -1,0 +1,15 @@
+.boardingContainer {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  width: 600px;
+  height: 600px;
+  margin: auto;
+  /*position: "absolute", display: "block"*/
+}

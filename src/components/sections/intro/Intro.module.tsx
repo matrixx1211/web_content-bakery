@@ -2,20 +2,21 @@ import style from "./Intro.module.css";
 import Header from "../../header/Header.module.tsx";
 import Circle from "../../circle/Circle.module.tsx";
 import { motion } from "framer-motion";
+import Navigation from "../../navigation/Navigation.module.tsx";
 
 const lines = ["WE ARE", "MODERN", "DIGITAL", "FACTORY", "THAT HELPS", "TO OPTIMIZE,", "MODERNIZE", "AND GROW."];
 
 function Line({ line, index }: { line: string; index: number }) {
   return (
-    <div>
+    <motion.div whileHover={{ scaleX: 1.2 }}>
       <motion.span
         transition={{ type: "spring", stiffness: 75, duration: 0.5, delay: 0.1 * index }}
-        whileInView={{ y: [60, 0] }}
+        whileInView={{ y: [64, 0] }}
         className={style.introTextLine}
       >
         {line}
       </motion.span>
-    </div>
+    </motion.div>
   );
 }
 
@@ -40,6 +41,7 @@ function PageNumber() {
 export default function Intro() {
   return (
     <section id="intro" className={style.contentContainer + " contentContainer"}>
+      <Navigation />
       <PageNumber />
 
       <div className={style.flex}>

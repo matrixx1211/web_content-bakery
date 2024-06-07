@@ -1,0 +1,36 @@
+@import "/src/App";
+
+.circlesContainer {
+  @include flexCenter;
+  width: calc(var(--circle-size) * 2);
+  height: calc(var(--circle-size) * 2);
+  overflow: visible;
+  cursor: none;
+
+  .centerContainer {
+    width: var(--circle-size);
+    aspect-ratio: 1/1;
+    position: relative;
+    overflow: visible;
+
+    .circle {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 2px solid white;
+      position: absolute;
+    }
+
+    .iconContainer {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+
+      .icon {
+        width: 50%;
+        margin: auto;
+      }
+    }
+  }
+}
