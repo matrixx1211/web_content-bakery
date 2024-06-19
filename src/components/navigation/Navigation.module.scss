@@ -1,0 +1,54 @@
+@import "/src/App";
+
+.navigationContainer {
+  @include area600;
+  position: absolute;
+  right: 0;
+  top: var(--nav-y-offset);
+  z-index: 10;
+  padding-right: var(--spacing-full);
+  color: var(--content-text-color);
+  overflow: visible;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--spacing-half);
+}
+
+.navItem {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+  text-decoration: none;
+  color: inherit;
+
+  .navLink {
+    font-size: 18px;
+    line-height: 24px;
+    display: inline-block;
+    padding: 0 var(--spacing-quarter) 0 var(--spacing-full);
+    grid-column: 1;
+    grid-row: 2;
+    position: relative;
+
+    .navLinkLine {
+      width: 0;
+      position: absolute;
+      left: 0;
+      background: var(--nav-active-crossed-color);
+      height: 2px;
+      top: 50%;
+      transform: translate(0, -100%);
+    }
+  }
+
+  .navLinkPage {
+    grid-column: 2;
+    grid-row: 1;
+    font-size: 10px;
+    //line-height: 0;
+    vertical-align: baseline;
+    overflow: visible;
+  }
+}

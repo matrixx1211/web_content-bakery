@@ -8,8 +8,7 @@
 }
 
 .loader {
-  width: 600px;
-  height: 600px;
+  width: 40vw;
+  aspect-ratio: 1;
   margin: auto;
-  /*position: "absolute", display: "block"*/
 }

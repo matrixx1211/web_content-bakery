@@ -6,6 +6,7 @@
   box-sizing: border-box;
   overflow: hidden;
   /*cursor: none;*/
+  scroll-behavior: smooth;
 }
 
 body {

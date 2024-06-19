@@ -1,13 +1,13 @@
 import "./App.scss";
-import Intro from "./components/sections/intro/Intro.module.tsx";
-import WhoWeAre from "./components/sections/whoweare/WhoWeAre.module.tsx";
-import WhatWeDo from "./components/sections/whatwedo/WhatWeDo.module.tsx";
-import OurTools from "./components/sections/ourtools/OutTools.module.tsx";
-import Contact from "./components/sections/contact/Contact.module.tsx";
-import Transition from "./components/transition/Transition.module.tsx";
-import Cursor from "./components/cursor/Cursor.module.tsx";
-import { useEffect, useState } from "react";
+import { lazy, useEffect, useState } from "react";
 import Boarding from "./components/boarding/Boarding.module.tsx";
+const Intro = lazy(() => import("./components/sections/intro/Intro.module.tsx"));
+const WhoWeAre = lazy(() => import("./components/sections/whoweare/WhoWeAre.module.tsx"));
+const WhatWeDo = lazy(() => import("./components/sections/whatwedo/WhatWeDo.module.tsx"));
+const OurTools = lazy(() => import("./components/sections/ourtools/OutTools.module.tsx"));
+const Contact = lazy(() => import("./components/sections/contact/Contact.module.tsx"));
+const Transition = lazy(() => import("./components/transition/Transition.module.tsx"));
+import Cursor from "./components/cursor/Cursor.module.tsx";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
