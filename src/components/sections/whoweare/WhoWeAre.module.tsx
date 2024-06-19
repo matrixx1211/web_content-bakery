@@ -1,4 +1,4 @@
-import style from "./WhoWeAre.module.css";
+import style from "./WhoWeAre.module.scss";
 import Header from "../../header/Header.module.tsx";
 import Navigation from "../../navigation/Navigation.module.tsx";
 

@@ -1,4 +1,3 @@
-/* TODO: ODSTRANIT nejspíš Styly kurzoru -- nejspíš zbytečné */
 .cursor {
   position: fixed;
   z-index: 1000;
@@ -7,43 +6,38 @@
   pointer-events: none;
   mix-blend-mode: difference;
 }
-
-.top,
-.bottom,
-.left,
-.right {
+.cursor .top,
+.cursor .bottom,
+.cursor .left,
+.cursor .right {
   position: absolute;
   background-color: var(--cursor-color);
   border-radius: var(--border-radius) 0 var(--border-radius) 0;
-  /*border: 1px solid var(--cursor-border-color);*/
 }
-
-.top,
-.bottom {
+.cursor .top,
+.cursor .bottom {
   width: var(--cursor-thickness);
   height: var(--cursor-length);
   left: var(--cursor-x-center);
 }
-
-.right,
-.left {
+.cursor .right,
+.cursor .left {
   height: var(--cursor-thickness);
   width: var(--cursor-length);
   top: var(--cursor-y-center);
 }
-
-.top {
+.cursor .top {
   top: 0;
 }
-
-.bottom {
+.cursor .bottom {
   bottom: 0;
 }
-
-.right {
+.cursor .right {
   right: 0;
 }
 
 .left {
   left: 0;
 }
+
+/*# sourceMappingURL=Cursor.module.css.map */

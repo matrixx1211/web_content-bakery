@@ -1,6 +1,16 @@
 import { motion } from "framer-motion";
 import style from "../Intro.module.scss";
 import { useEffect, useState } from "react";
+type FocusableImageType = {
+  src: string;
+  x: string;
+  y: string;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
+  isFocused: boolean;
+  variant: string;
+  anim: any;
+};
 
 export default function FocusableImage({
   src,
@@ -11,22 +21,12 @@ export default function FocusableImage({
   isFocused,
   variant,
   anim,
-}: {
-  src: string;
-  x: string;
-  y: string;
-  onMouseEnter: () => void;
-  onMouseLeave: () => void;
-  isFocused: boolean;
-  variant: string;
-  anim: any;
-}) {
+}: FocusableImageType) {
   const [random, setRandom] = useState({ x: 80, y: 70 });
-  const [delay, setDelay] = useState(0);
   useEffect(() => {
-    setRandom({ x: Math.random() * (95 - 70 + 1) + 55, y: Math.random() * (85 - 65 + 1) + 55 });
-    setDelay(Math.random() / 2);
+    setRandom({ x: Math.random() * (95 - 55 + 1) + 65, y: Math.random() * (85 - 50 + 1) + 65 });
   }, []);
+
   return (
     <motion.img
       className={style.image}
@@ -35,7 +35,7 @@ export default function FocusableImage({
       src={src}
       alt={src}
       animate={variant === "initial" ? "initial" : isFocused ? variant : "default"}
-      {...anim.image({ x: x + random.x + "%", y: y + random.y + "%", delay })}
+      {...anim.image({ x: x + random.x + "%", y: y + random.y + "%" })}
     />
   );
 }

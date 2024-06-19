@@ -1,9 +1,10 @@
-import style from "./Cursor.module.css";
+import style from "./Cursor.module.scss";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useEffect, useState } from "react";
 
 export default function Cursor() {
   const [clicked, setClicked] = useState(false);
+  const [showed, setShowed] = useState(false);
   const cursorSize = 24;
 
   const mouse = {
@@ -19,6 +20,7 @@ export default function Cursor() {
   };
 
   const manageMouseMove = (e: any) => {
+    if (!showed) setShowed(true);
     const { clientX, clientY } = e;
     mouse.x.set(clientX - cursorSize / 2);
     mouse.y.set(clientY - cursorSize / 2);
@@ -28,11 +30,15 @@ export default function Cursor() {
     window.addEventListener("mousemove", manageMouseMove);
     window.addEventListener("mousedown", () => setClicked(true));
     window.addEventListener("mouseup", () => setClicked(false));
-
+    window.addEventListener("mouseover", () => setShowed(true));
+    window.addEventListener("mouseout", () => setShowed(false));
+    console.log(showed);
     return () => {
       window.removeEventListener("mousemove", manageMouseMove);
       window.removeEventListener("mousedown", () => setClicked(true));
       window.removeEventListener("mouseup", () => setClicked(false));
+      window.removeEventListener("mouseenter", () => setShowed(true));
+      window.removeEventListener("mouseleave", () => setShowed(false));
     };
   }, []);
 
@@ -48,7 +54,7 @@ export default function Cursor() {
   return (
     <motion.div
       className={style.cursor}
-      style={{ top: smoothMouse.y, left: smoothMouse.x }}
+      style={{ top: smoothMouse.y, left: smoothMouse.x, opacity: showed ? 1 : 0 }}
       transition={{ type: "spring", stiffness: 500, damping: 28 }}
       variants={variants}
       animate={variantAnim}

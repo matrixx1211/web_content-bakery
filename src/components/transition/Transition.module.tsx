@@ -1,4 +1,4 @@
-import style from "./Transition.module.css";
+import style from "./Transition.module.scss";
 import { useLocation } from "react-router-dom";
 import { useEffect, useRef } from "react";
 

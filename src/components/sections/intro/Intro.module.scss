@@ -3,9 +3,8 @@
 .contentContainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-
   position: relative;
 }
 
@@ -24,6 +23,7 @@
   border-bottom: 1px solid;
   z-index: 10;
   overflow: visible;
+  font-size: 1.6rem;
 
   .pageNumber {
     float: right;
@@ -42,8 +42,8 @@
   pointer-events: none;
 
   .introTextLine {
-    font-size: 100px;
-    line-height: 80px;
+    font-size: 85px;
+    line-height: 68px;
     letter-spacing: 0px;
     display: inline-block;
     overflow: visible;
@@ -54,4 +54,5 @@
   position: absolute;
   width: 18vw;
   aspect-ratio: 3/2;
+  top: calc(50% - 9vw);
 }

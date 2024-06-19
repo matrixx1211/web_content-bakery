@@ -1,11 +1,26 @@
-# React + TypeScript + Vite
+# Content Bakery web
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Korekce
 
-Currently, two official plugins are available:
+1. korekce - 19. 6. 2024
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-[x] hlavní titulek
+  - zmenšit fornt cca o 15% 
+  - duration 2,8x
+-[x] na úplným začátku to roztočený logo ne
+-[x] logo vlevo nahoře 
+  - zmenšit o 20% 
+  - bez nájezdu jen vylnutí 
+  - jde jako první
+-[x] menu vpravo 
+  - řádky blíž u sebe viz XD 
+  - zmenšit o 30% 
+  - duration 1,5x 
+  - jednotlivé řádky vůči sobě se zpožděním třeba 0,1s
+-[x] fotky 
+  - vylmnutím na pozicích viz XD 
+  - cca v čase kdy jde Menu a „01“ číslo stránky
+
 
 ## Expanding the ESLint configuration
 
@@ -17,12 +32,12 @@ If you are developing a production application, we recommend updating the config
 export default {
   // other rules...
   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
+    ecmaVersion: "latest",
+    sourceType: "module",
+    project: ["./tsconfig.json", "./tsconfig.node.json"],
     tsconfigRootDir: __dirname,
   },
-}
+};
 ```
 
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`

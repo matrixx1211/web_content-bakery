@@ -9,6 +9,10 @@
   scroll-behavior: smooth;
 }
 
+html {
+  font-size: 10px;
+}
+
 body {
   background-color: var(--background);
   width: 100%;
@@ -32,7 +36,7 @@ body {
   --spacing-full: 16px;
   --spacing-half: 8px;
   --spacing-quarter: 4px;
-  --header-height: 80px;
+  --header-height: 64px;
   --nav-y-offset: 100px;
   --border-radius: 8px;
   --cursor-width: 24px;

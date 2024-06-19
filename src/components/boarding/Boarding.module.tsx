@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import logo from "../../assets/images/Logo.svg";
-import style from "./Boarding.module.css";
+import style from "./Boarding.module.scss";
 import { BoardingAnimConfig } from "../../assets/config/BoardingAnim.config.tsx";
 
 export default function Boarding() {

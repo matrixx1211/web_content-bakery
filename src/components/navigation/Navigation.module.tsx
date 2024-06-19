@@ -13,7 +13,7 @@ function NavItem({ id, title, pos, anim, onlyActive, location }: any) {
   const isActive = location.hash ? location.hash === id : navItems[0].id;
 
   return (
-    <motion.a href={id} className={style.navItem} {...(anim ? anim.navItem(onlyActive, isActive) : {})}>
+    <motion.a href={id} className={style.navItem} {...(anim ? anim.navItem(onlyActive, isActive, pos) : {})}>
       <motion.span className={style.navLink}>
         {title}
         <motion.span className={style.navLinkLine} {...(anim ? anim.navLinkLine(isActive) : {})}></motion.span>
