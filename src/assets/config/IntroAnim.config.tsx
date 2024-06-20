@@ -41,7 +41,7 @@ export const IntroAnimConfig = {
       return {
         animate: { x: [180, 0], opacity: onlyActive && !isActive ? 0 : 1 },
         whileHover: { opacity: 1 },
-        transition: { type: "spring", duration: navigationDuration, delay: navigationDelay + (pos * 0.1) },
+        transition: { type: "spring", duration: navigationDuration, delay: navigationDelay + pos * 0.1 },
       };
     },
     navLinkLine: (isActive: boolean) => {
@@ -106,31 +106,25 @@ export const IntroAnimConfig = {
       },
     },
     focusableImage: {
-      image: ({ x, y }: any) => {
-        const delay = Math.random() * (0.5 - 0.1) + 0.1;
-        console.log(delay);
+      focusableImage: () => {
+        const delay = Math.random() * (0.6 - 0.1) + 0.1;
 
         return {
           variants: {
             initial: {
-              x: [x],
-              y: [y],
               opacity: [0, 0.5],
+              filter: "blur(2px)",
               transition: { duration: imagesDuration, delay: imagesDelay + delay },
             },
             default: {
-              x,
-              y,
               opacity: 0.5,
               scale: 1,
               filter: "blur(2px)",
               transition: { type: "string", duration: imagesDuration },
             },
             focus: {
-              x,
-              y,
               opacity: 1,
-              scale: 1.2,
+              scale: 1.1,
               filter: "blur(0)",
               transition: { type: "string", duration: imagesDuration },
             },
@@ -155,14 +149,14 @@ export const IntroAnimConfig = {
     },
     circle1: (pos: any) => {
       return {
-        animate: { x: [-10, 0], y: [-10, 0], opacity: [0,1]},
+        animate: { x: [-10, 0], y: [-10, 0], opacity: [0, 1] },
         transition: { type: "string", duration: circleDuration, delay: circleDelay },
         style: { x: pos.x1, y: pos.y1 },
       };
     },
     circle2: (pos: any) => {
       return {
-        animate: { x: [10, 0], y: [10, 0], opacity: [0,1]},
+        animate: { x: [10, 0], y: [10, 0], opacity: [0, 1] },
         transition: { type: "string", duration: circleDuration, delay: circleDelay },
         style: { x: pos.x2, y: pos.y2 },
       };

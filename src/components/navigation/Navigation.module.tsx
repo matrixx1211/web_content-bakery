@@ -1,6 +1,8 @@
 import style from "./Navigation.module.scss";
 import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
+import { scrollToElementWithId } from "../../helpers/Helpers.tsx";
+import { MouseEvent } from "react";
 
 const navItems = [
   { id: "#intro", title: "INTRO" },
@@ -9,11 +11,22 @@ const navItems = [
   { id: "#ourtools", title: "OUR TOOLS" },
   { id: "#contact", title: "CONTACT" },
 ];
+
 function NavItem({ id, title, pos, anim, onlyActive, location }: any) {
   const isActive = location.hash ? location.hash === id : navItems[0].id;
+  const scrollDuration =
+    Math.abs(
+      navItems.findIndex((item) => item.id === id) -
+        navItems.findIndex((item) => item.id === (window.location.hash ?? "#intro")),
+    ) * 1000;
 
   return (
-    <motion.a href={id} className={style.navItem} {...(anim ? anim.navItem(onlyActive, isActive, pos) : {})}>
+    <motion.a
+      href={id}
+      onClick={(e: MouseEvent) => scrollToElementWithId(e, id, scrollDuration)}
+      className={style.navItem}
+      {...(anim ? anim.navItem(onlyActive, isActive, pos) : {})}
+    >
       <motion.span className={style.navLink}>
         {title}
         <motion.span className={style.navLinkLine} {...(anim ? anim.navLinkLine(isActive) : {})}></motion.span>

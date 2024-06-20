@@ -1,30 +1,29 @@
 import style from "./Transition.module.scss";
 import { useLocation } from "react-router-dom";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
+import { scrollToElementWithId } from "../../helpers/Helpers.tsx";
 
 export default function Transition({ pageTitle, pageNumber }: { pageTitle: string; pageNumber: string }) {
   const id = "#" + pageTitle.toLowerCase().split(" ").join("");
   const location = useLocation();
-  const ref: any = useRef();
-
   useEffect(() => {
     if (id && location && location.hash === id.replace("#", "#before-")) {
       const timeoutId = setTimeout(() => {
-        if (ref.current) { // Check if the link element exists
-          (ref.current as any).click(); // Simulate click on the anchor element
-        }
+        scrollToElementWithId(null, id, 1500);
       }, 1000);
 
-      return () => clearTimeout(timeoutId); // Clear timeout on cleanup
+      return () => clearTimeout(timeoutId);
     }
   }, [id, location]);
 
   return (
-    <a href={id} className={style.link} ref={ref}>
-      <section id="before-whoweare" className={`${style.transitionContainer} transitionContainer`}>
-        <span className={`${style.pageNumber} area600`}>{pageNumber}</span>
-        <span className={`${style.pageTitle} nimbus900`}> {pageTitle}</span>
-      </section>
-    </a>
+    <section
+      id="before-whoweare"
+      className={`${style.transitionContainer} transitionContainer`}
+      onClick={() => scrollToElementWithId(null, id, 1500)}
+    >
+      <span className={style.pageNumber}>{pageNumber}</span>
+      <span className={style.pageTitle}> {pageTitle}</span>
+    </section>
   );
 }

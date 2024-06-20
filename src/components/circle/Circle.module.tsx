@@ -2,8 +2,12 @@ import style from "./Circle.module.scss";
 import { useMotionValue, useSpring } from "framer-motion";
 import { MousePosition, useMouse } from "@uidotdev/usehooks";
 import { motion } from "framer-motion";
+import { MouseEvent } from "react";
+import { scrollToElementWithId } from "../../helpers/Helpers.tsx";
 
 export default function Circle({ id, anim }: { id: string; anim: any }) {
+  const [mouse, ref]: [mouse: MousePosition, ref: any] = useMouse();
+
   const circle = {
     x1: useMotionValue(0),
     y1: useMotionValue(0),
@@ -25,18 +29,13 @@ export default function Circle({ id, anim }: { id: string; anim: any }) {
     x3: useSpring(circle.x3, smoothOptions3),
     y3: useSpring(circle.y3, smoothOptions3),
   };
-  const [mouse, ref]: [mouse: MousePosition, ref: any] = useMouse();
 
   const handleMouse = () => {
-    /* TODO: nějak to jde víc napravo než nalevo */
-    /*if (mouse.elementX * mouse.elementX + mouse.elementY * mouse.elementY < (176 - 44) * (176 - 44)) {
-    }*/
-
     const halfSize = 44;
     if (
-      mouse.elementX <= halfSize * 3 * 2 &&
+      mouse.elementX <= halfSize * 2 * 2 &&
       mouse.elementX >= -halfSize * 2 &&
-      mouse.elementY <= halfSize * 3 * 2 &&
+      mouse.elementY <= halfSize * 2 * 2 &&
       mouse.elementY >= -halfSize * 2
     ) {
       circle.x1.set(mouse.elementX - 44);
@@ -45,8 +44,6 @@ export default function Circle({ id, anim }: { id: string; anim: any }) {
       circle.y2.set(mouse.elementY - 44);
       circle.x3.set(mouse.elementX - 44);
       circle.y3.set(mouse.elementY - 44);
-    } else {
-      reset();
     }
   };
 
@@ -58,7 +55,6 @@ export default function Circle({ id, anim }: { id: string; anim: any }) {
     circle.y2.set(0);
     circle.x3.set(0);
     circle.y3.set(0);
-    //console.log("leave", mouse.elementX, mouse.elementY);
   };
 
   return (
@@ -68,7 +64,14 @@ export default function Circle({ id, anim }: { id: string; anim: any }) {
       onMouseLeave={reset}
       {...anim.circleContainer}
     >
-      <a href={"#" + id} className={style.centerContainer} ref={ref}>
+      <a
+        onClick={(e: MouseEvent) => {
+          scrollToElementWithId(e, id);
+        }}
+        href={"#" + id}
+        className={style.centerContainer}
+        ref={ref}
+      >
         <motion.div className={style.circle} {...anim.circle1(circleSmooth)}></motion.div>
         <motion.div className={style.circle} {...anim.circle2(circleSmooth)}></motion.div>
         <motion.div className={style.iconContainer} {...anim.iconContainer(circleSmooth)}>

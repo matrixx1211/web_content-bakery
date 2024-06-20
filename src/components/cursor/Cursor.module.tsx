@@ -32,7 +32,7 @@ export default function Cursor() {
     window.addEventListener("mouseup", () => setClicked(false));
     window.addEventListener("mouseover", () => setShowed(true));
     window.addEventListener("mouseout", () => setShowed(false));
-    console.log(showed);
+
     return () => {
       window.removeEventListener("mousemove", manageMouseMove);
       window.removeEventListener("mousedown", () => setClicked(true));

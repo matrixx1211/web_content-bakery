@@ -44,15 +44,17 @@
   .introTextLine {
     font-size: 85px;
     line-height: 68px;
-    letter-spacing: 0px;
+    letter-spacing: 0;
     display: inline-block;
     overflow: visible;
   }
 }
 
-.image {
+.focusableImage {
   position: absolute;
-  width: 18vw;
+  width: 18%;
   aspect-ratio: 3/2;
-  top: calc(50% - 9vw);
+  @media screen and (min-width: 1921px) {
+    width: 15%;
+  }
 }

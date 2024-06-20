@@ -22,20 +22,40 @@ export default function FocusableImage({
   variant,
   anim,
 }: FocusableImageType) {
-  const [random, setRandom] = useState({ x: 80, y: 70 });
+  const [random, setRandom] = useState({ x: 10, y: 10, mt: 100, mb: 200 });
+  const intervalX = { min: 15, max: 25 };
+  const intervalY = { min: 15, max: 25 };
+  const intervalMarginTop = { min: 100, max: 150 };
+  const intervalMarginBottom = { min: 180, max: 220 };
+
   useEffect(() => {
-    setRandom({ x: Math.random() * (95 - 55 + 1) + 65, y: Math.random() * (85 - 50 + 1) + 65 });
+    setRandom({
+      x: Math.random() * (intervalX.max - intervalX.min + 1) + intervalX.min,
+      y: Math.random() * (intervalY.max - intervalY.min + 1) + intervalY.min,
+      mt: Math.random() * (intervalMarginTop.max - intervalMarginTop.min + 1) + intervalMarginTop.min,
+      mb: Math.random() * (intervalMarginBottom.max - intervalMarginBottom.min + 1) + intervalMarginBottom.min,
+    });
   }, []);
+
+  const pos = {
+    top: y.includes("-") ? `0` : "auto",
+    marginTop: y.includes("-") ? `${random.mt}px` : "auto",
+    bottom: y.includes("+") ? `0` : "auto",
+    marginBottom: y.includes("+") ? `${random.mb}px` : "auto",
+    left: x.includes("-") ? `${random.x}%` : "auto",
+    right: x.includes("+") ? `${random.x}%` : "auto",
+  };
 
   return (
     <motion.img
-      className={style.image}
+      className={style.focusableImage}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       src={src}
       alt={src}
+      style={{ ...pos }}
       animate={variant === "initial" ? "initial" : isFocused ? variant : "default"}
-      {...anim.image({ x: x + random.x + "%", y: y + random.y + "%" })}
+      {...anim.focusableImage()}
     />
   );
 }

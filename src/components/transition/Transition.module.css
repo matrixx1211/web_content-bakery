@@ -1,20 +1,17 @@
-.link {
-  text-decoration: none;
-  cursor: none;
-}
-.link .transitionContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.link .transitionContainer .pageNumber {
-  font-size: 32px;
-  line-height: 64px;
-  padding: 32px 16px 0 0;
-}
-.link .transitionContainer .pageTitle {
-  font-size: 64px;
-  line-height: 64px;
-}
+/* Error: Can't find stylesheet to import.
+ *   ,
+ * 1 | @import "/src/App";
+ *   |         ^^^^^^^^^^
+ *   '
+ *   Transition.module.scss 1:9  root stylesheet */
 
-/*# sourceMappingURL=Transition.module.css.map */
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Can't find stylesheet to import.\a   \2577 \a 1 \2502  @import \"/src/App\";\a   \2502          ^^^^^^^^^^\a   \2575 \a   Transition.module.scss 1:9  root stylesheet";
+}
