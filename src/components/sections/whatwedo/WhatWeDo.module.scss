@@ -1,0 +1,42 @@
+@import "src/App";
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+
+  .linesText {
+    @include nimbus900;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+
+    .lineText {
+      font-size: 7rem;
+      line-height: 9.1rem;
+      letter-spacing: 0;
+      display: inline-block;
+      overflow: visible;
+    }
+
+    /*.pageIndicator {
+      @include area600;
+      border-bottom: 1px solid;
+      z-index: 10;
+      overflow: visible;
+      font-size: 1.6rem;
+      width: 0;
+
+      .pageNumber {
+        float: right;
+        overflow: visible;
+        padding-bottom: var(--spacing-quarter);
+      }
+    }*/
+
+  }
+}

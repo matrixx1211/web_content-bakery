@@ -3,7 +3,7 @@ import { useMotionValue, useSpring } from "framer-motion";
 import { MousePosition, useMouse } from "@uidotdev/usehooks";
 import { motion } from "framer-motion";
 import { MouseEvent } from "react";
-import { scrollToElementWithId } from "../../helpers/Helpers.tsx";
+import { scrollToElementWithId } from "../helpers/Helpers.tsx";
 
 export default function Circle({ id, anim }: { id: string; anim: any }) {
   const [mouse, ref]: [mouse: MousePosition, ref: any] = useMouse();
@@ -62,7 +62,7 @@ export default function Circle({ id, anim }: { id: string; anim: any }) {
       className={style.circlesContainer}
       onMouseMove={handleMouse}
       onMouseLeave={reset}
-      {...anim.circleContainer}
+      {...(anim ? anim.circleContainer : {})}
     >
       <a
         onClick={(e: MouseEvent) => {
@@ -72,14 +72,14 @@ export default function Circle({ id, anim }: { id: string; anim: any }) {
         className={style.centerContainer}
         ref={ref}
       >
-        <motion.div className={style.circle} {...anim.circle1(circleSmooth)}></motion.div>
-        <motion.div className={style.circle} {...anim.circle2(circleSmooth)}></motion.div>
-        <motion.div className={style.iconContainer} {...anim.iconContainer(circleSmooth)}>
+        <motion.div className={style.circle} {...(anim ? anim.circle1(circleSmooth) : {})}></motion.div>
+        <motion.div className={style.circle} {...(anim ? anim.circle2(circleSmooth) : {})}></motion.div>
+        <motion.div className={style.iconContainer} {...(anim ? anim.iconContainer(circleSmooth) : {})}>
           <svg className={style.icon} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25">
             <motion.path
               fill="#ffffff"
               d="M12.5 18 2 7.707 2.707 7l9.793 9.586L22.293 7l.707.707L12.5 18z"
-              {...anim.icon}
+              {...(anim ? anim.icon : {})}
             />
           </svg>
         </motion.div>
