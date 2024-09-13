@@ -16,6 +16,22 @@
   gap: var(--spacing-quarter);
 }
 
+.navigationContainerDark {
+  @include area600;
+  position: absolute;
+  right: 0;
+  top: var(--nav-y-offset);
+  z-index: 10;
+  padding-right: var(--spacing-full);
+  color: var(--ourtools-text-color);
+  overflow: visible;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--spacing-quarter);
+}
+
 .navItem {
   display: grid;
   grid-template-columns: auto auto;

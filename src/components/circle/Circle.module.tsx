@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { MouseEvent } from "react";
 import { scrollToElementWithId } from "../helpers/Helpers.tsx";
 
-export default function Circle({ id, anim }: { id: string; anim: any }) {
+export default function Circle({ id, anim, dark = false }: { id: string; anim: any; dark?: boolean }) {
   const [mouse, ref]: [mouse: MousePosition, ref: any] = useMouse();
 
   const circle = {
@@ -72,12 +72,12 @@ export default function Circle({ id, anim }: { id: string; anim: any }) {
         className={style.centerContainer}
         ref={ref}
       >
-        <motion.div className={style.circle} {...(anim ? anim.circle1(circleSmooth) : {})}></motion.div>
-        <motion.div className={style.circle} {...(anim ? anim.circle2(circleSmooth) : {})}></motion.div>
+        <motion.div className={dark ? style.circleDark : style.circle} {...(anim ? anim.circle1(circleSmooth) : {})}></motion.div>
+        <motion.div className={dark ? style.circleDark : style.circle} {...(anim ? anim.circle2(circleSmooth) : {})}></motion.div>
         <motion.div className={style.iconContainer} {...(anim ? anim.iconContainer(circleSmooth) : {})}>
           <svg className={style.icon} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25">
             <motion.path
-              fill="#ffffff"
+              fill={dark ? "#000000" : "#ffffff"}
               d="M12.5 18 2 7.707 2.707 7l9.793 9.586L22.293 7l.707.707L12.5 18z"
               {...(anim ? anim.icon : {})}
             />

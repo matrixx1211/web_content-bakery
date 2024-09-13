@@ -56,10 +56,12 @@ function NavigationItem({
 }
 
 export default function Navigation({
+  dark = false,
   onlyActive,
   anim,
   activePage,
 }: {
+  dark?: boolean;
   onlyActive: boolean;
   anim?: any;
   activePage: number;
@@ -69,9 +71,10 @@ export default function Navigation({
   const [animState, setAnimState] = useState({ variant: "initial", focus: -1 });
 
   return (
-    <nav className={style.navigationContainer}>
+    <nav className={dark ? style.navigationContainerDark : style.navigationContainer}>
       {navItems.map((item) => (
         <NavigationItem
+          dark={dark}
           id={item.id}
           title={item.title}
           pos={item.pos}

@@ -133,7 +133,6 @@ function IntroContent({ anim }: { anim: any }) {
       <FocusableLines imageFocus={imageFocus} anim={anim.lines} />
 
       {images.map((image, index) => {
-        console.log(imageFocus);
         const data = {
           ...image,
           isFocused: imageFocus.image === index,

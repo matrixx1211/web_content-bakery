@@ -3,7 +3,7 @@
  * 1 | @import "src/App";
  *   |         ^^^^^^^^^
  *   '
- *   WhatWeDo.module.scss 1:9  root stylesheet */
+ *   OurTools2.module.scss 1:9  root stylesheet */
 
 body::before {
   font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",

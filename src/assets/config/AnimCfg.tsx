@@ -347,28 +347,28 @@ export const AnimCfg = {
             },
           };
         },
-      detail: {
-        variants: {
-          initial: {
-            opacity: 0,
-            transition: {
-              type: "spring",
-              duration: textDuration,
-              delay: textDelay * 0.1 + sectionDelay,
+        detail: {
+          variants: {
+            initial: {
+              opacity: 0,
+              transition: {
+                type: "spring",
+                duration: textDuration,
+                delay: textDelay * 0.1 + sectionDelay,
+              },
+            },
+            default: {
+              opacity: 0,
+              backgroundColor: "transparent",
+              transition: { type: "string", duration: textDuration / 3 },
+            },
+            focus: {
+              opacity: 1,
+              backgroundColor: "rgba(0,0,0,0.3)",
+              transition: { type: "string", duration: textDuration / 3 },
             },
           },
-          default: {
-            opacity: 0,
-            backgroundColor: "transparent",
-            transition: { type: "string", duration: textDuration / 3 },
-          },
-          focus: {
-            opacity: 1,
-            backgroundColor: "rgba(0,0,0,0.3)",
-            transition: { type: "string", duration: textDuration / 3 },
-          },
         },
-      },
       },
       /*pageNumber: {
         pageIndicator: {
@@ -382,6 +382,128 @@ export const AnimCfg = {
       },*/
     },
   },
-  ourTools: {},
-  contact: {},
+  ourTools: {
+    ourToolsContent: {
+      bigLines: {
+        line: (index: any) => {
+          return {
+            animate: { y: [55, 0] },
+            transition: {
+              type: "spring",
+              duration: textDuration,
+              delay: textDelay + index * 0.1 + sectionDelay,
+            },
+          };
+        },
+      },
+      pageNumber: {
+        pageIndicator: {
+          animate: { width: ["0%", "100%"] },
+          transition: { type: "spring", duration: pageNumberDuration + 0.5, delay: pageNumberDelay + sectionDelay },
+        },
+        pageNumber: {
+          animate: { scale: [0, 1] },
+          transition: { type: "spring", duration: pageNumberDuration + 0.5, delay: pageNumberDelay + sectionDelay },
+        },
+      },
+      smallLines: {
+        line: (index: any) => {
+          return {
+            animate: { y: [25, 0] },
+            transition: {
+              type: "spring",
+              duration: textDuration,
+              delay: textDelay + index * 0.1 + sectionDelay,
+            },
+          };
+        },
+      },
+    },
+  },
+  ourTools2: {
+    ourTools2Content: {
+      linesWithDetail: {
+        line: (index: any) => {
+          return {
+            variants: {
+              initial: {
+                y: [70, 0],
+                transition: {
+                  type: "spring",
+                  duration: textDuration,
+                  delay: textDelay + index * 0.1 + sectionDelay,
+                },
+              },
+              default: {
+                opacity: 1,
+                color: "#000000ff",
+                textShadow: "0 0 0 0",
+                //transition: { type: "string", duration: textDuration / 3 },
+              },
+              unfocus: {
+                opacity: 0.5,
+                color: "#f4f4f4ff",
+                textShadow: "0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black",
+                transition: { type: "string", duration: textDuration / 3 },
+              },
+              focus: {
+                opacity: 1,
+                color: "#000000ff",
+                textShadow: "0 0 0 black, 0 0 0 black, 0 0 0 black, 0 0 0 black",
+                transition: { type: "string", duration: textDuration / 3 },
+              },
+            },
+          };
+        },
+        detail: {
+          variants: {
+            initial: {
+              opacity: 0,
+              transition: {
+                type: "spring",
+                duration: textDuration,
+                delay: textDelay * 0.1 + sectionDelay,
+              },
+            },
+            default: {
+              opacity: 0,
+              backgroundColor: "transparent",
+              transition: { type: "string", duration: textDuration / 3 },
+            },
+            focus: {
+              opacity: 1,
+              backgroundColor: "rgba(244,244,244,0.2)",
+              transition: { type: "string", duration: textDuration / 3 },
+            },
+          },
+        },
+      },
+      /*pageNumber: {
+        pageIndicator: {
+          //animate: { x: [-60, 0] },
+          //transition: { type: "spring", duration: pageNumberDuration, delay: pageNumberDelay },
+        },
+        pageNumber: {
+          //animate: { x: [-60, 0], scale: [0.2, 1] },
+          //transition: { type: "spring", duration: pageNumberDuration, delay: pageNumberDelay },
+        },
+      },*/
+    },
+  },
+  contact: {
+    contactContent: {
+      lines: {
+        line: (index: any) => {
+          return {
+            animate: { y: [65, 0] },
+            transition: {
+              type: "spring",
+              duration: textDuration,
+              delay: textDelay + index * 0.1 + sectionDelay,
+            },
+          };
+        },
+      },
+    },
+  },
 };
