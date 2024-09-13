@@ -6,7 +6,7 @@ export default function OurTools() {
   return (
     <section id="ourtools" className="contentContainer">
       <Header onlyActive={true} />
-      <Navigation onlyActive={true} />
+      <Navigation onlyActive={true} activePage={4} />
     </section>
   );
 }

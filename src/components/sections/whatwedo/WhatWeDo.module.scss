@@ -15,28 +15,47 @@
     align-items: center;
     overflow: visible;
 
-    .lineText {
-      font-size: 7rem;
-      line-height: 9.1rem;
-      letter-spacing: 0;
-      display: inline-block;
+    .lineContainer {
+      position: relative;
+      float: left;
+      width: fit-content;
       overflow: visible;
-    }
 
-    /*.pageIndicator {
-      @include area600;
-      border-bottom: 1px solid;
-      z-index: 10;
-      overflow: visible;
-      font-size: 1.6rem;
-      width: 0;
-
-      .pageNumber {
-        float: right;
+      .lineTitle {
+        font-size: 7rem;
+        line-height: 9.1rem;
+        letter-spacing: 0;
+        display: inline-block;
         overflow: visible;
-        padding-bottom: var(--spacing-quarter);
       }
-    }*/
 
+      .lineDetail {
+        @include area400();
+        font-size: 2rem;
+        line-height: 3rem;
+
+        transform: translateY(100%);
+        overflow: visible !important;
+
+        z-index: 100;
+        pointer-events: none;
+        opacity: 0;
+
+        position: absolute;
+        left: 0;
+        bottom: 0;
+      }
+    }
+  }
+
+  .pageIndicator {
+    @include area600;
+    font-size: 3.2rem;
+    transform: translate(-10px);
+    display: inline-block;
+
+    .pageNumber {
+      padding-bottom: var(--spacing-quarter);
+    }
   }
 }

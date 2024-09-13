@@ -16,13 +16,24 @@ type FocusableImageType = {
   x: string;
   y: string;
   onMouseEnter: () => void;
+  onMouseMove: () => void;
   onMouseLeave: () => void;
   isFocused: boolean;
   variant: string;
   anim: any;
 };
 
-function FocusableImage({ src, x, y, onMouseEnter, onMouseLeave, isFocused, variant, anim }: FocusableImageType) {
+function FocusableImage({
+  src,
+  x,
+  y,
+  onMouseEnter,
+  onMouseLeave,
+  onMouseMove,
+  isFocused,
+  variant,
+  anim,
+}: FocusableImageType) {
   const [random, setRandom] = useState({ x: 10, y: 10, mt: 100, mb: 200 });
   const intervalX = { min: 15, max: 25 };
   const intervalY = { min: 15, max: 25 };
@@ -51,6 +62,7 @@ function FocusableImage({ src, x, y, onMouseEnter, onMouseLeave, isFocused, vari
     <motion.img
       className={style.focusableImage}
       onMouseEnter={onMouseEnter}
+      onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
       src={src}
       alt={src}
@@ -84,9 +96,29 @@ function FocusableLines({ imageFocus, anim }: { imageFocus: any; anim: any }) {
 }
 
 function IntroContent({ anim }: { anim: any }) {
-  const [imageFocus, setImageFocus] = useState({ anim: "initial", image: -1 });
-  const imageFocusEnter = (index: number) => setImageFocus({ anim: "focus", image: index });
-  const imageFocusLeave = () => setImageFocus({ anim: "default", image: -1 });
+  const [first, setFirst] = useState(true);
+  const [imageFocus, setImageFocus] = useState({ anim: "initial", image: -1, disabled: true });
+  const imageFocusEnter = (index: number) => {
+    if (!imageFocus.disabled) setImageFocus({ anim: "focus", image: index, disabled: false });
+  };
+  const imageFocusLeave = () => {
+    if (!imageFocus.disabled) setImageFocus({ anim: "default", image: -1, disabled: false });
+  };
+
+  const onMouseMove = (index: number) => {
+    if (imageFocus.anim === "default") setImageFocus({ anim: "focus", image: index, disabled: false });
+  };
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      if (first) {
+        setImageFocus({ anim: "default", image: -1, disabled: false });
+        setFirst(false);
+      }
+    }, 1500);
+
+    return () => clearTimeout(timeoutId);
+  }, [imageFocus]);
 
   const images = [
     { src: notino, x: "-", y: "-" },
@@ -101,10 +133,12 @@ function IntroContent({ anim }: { anim: any }) {
       <FocusableLines imageFocus={imageFocus} anim={anim.lines} />
 
       {images.map((image, index) => {
+        console.log(imageFocus);
         const data = {
           ...image,
           isFocused: imageFocus.image === index,
           onMouseEnter: () => imageFocusEnter(index),
+          onMouseMove: () => onMouseMove(index),
           onMouseLeave: imageFocusLeave,
           variant: imageFocus.anim,
         };
@@ -120,7 +154,7 @@ export default function Intro() {
   return (
     <section id="intro" className={style.contentContainer + " contentContainer"}>
       <Header onlyActive={false} anim={AnimCfg.general.header(false)} />
-      <Navigation onlyActive={false} anim={AnimCfg.general.navigation(false)} />
+      <Navigation onlyActive={false} anim={AnimCfg.general.navigation(false)} activePage={1} />
 
       <IntroContent anim={AnimCfg.intro.introContent} />
     </section>

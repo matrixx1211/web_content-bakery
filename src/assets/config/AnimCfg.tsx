@@ -5,6 +5,8 @@
  * 4. kruh
  * */
 
+import { useState } from "react";
+
 const params = new URLSearchParams(window.location.search);
 const paramDelay = parseFloat(params.get("delay") ?? "0");
 const paramDuration = parseFloat(params.get("duration") ?? "1");
@@ -27,7 +29,10 @@ const pageNumberDelay = 0.8 + paramDelay;
 const circleDuration = 0.5 * paramDuration;
 const circleDelay = 1 + paramDelay;
 
-const sectionDelay = 1.2;
+const transitionDuration = 1;
+const transitionDelay = 0.5;
+
+const sectionDelay = 1;
 
 export const AnimCfg = {
   general: {
@@ -45,10 +50,26 @@ export const AnimCfg = {
     },
     navigation: (applySectionDelay: boolean) => {
       return {
-        navItem: (onlyActive: boolean, isActive: boolean, pos: number) => {
+        navItem: (onlyActive: boolean, isActive: boolean, pos: number, focus: number) => {
+          const [initialOpacity, setInitialOpacity] = useState(true);
+          setTimeout(() => setInitialOpacity(false), 1000);
           return {
-            animate: { x: [180, 0], opacity: onlyActive && !isActive ? 0 : 1 },
-            whileHover: { opacity: 1, transition: { duration: 0 } },
+            variants: {
+              initial: {
+                x: [180, 0],
+                opacity: initialOpacity ? 1 : onlyActive && !isActive ? 0 : 1,
+              },
+              default: {
+                x: [0],
+                opacity: onlyActive && !isActive ? 0 : 1,
+                transition: { duration: 0.5, delay: 0.5 },
+              },
+              focused: {
+                x: [0],
+                opacity: pos === focus ? 1 : onlyActive && !isActive ? 0 : 1,
+                transition: { duration: 0, delay: 0 },
+              },
+            },
             transition: {
               type: "spring",
               duration: navigationDuration,
@@ -58,13 +79,25 @@ export const AnimCfg = {
         },
         navLinkLine: (isActive: boolean) => {
           return {
-            style: { opacity: isActive ? 1 : 0 },
-            animate: { width: ["0%", "100%"] },
+            variants: {
+              initial: {
+                width: ["0%", "100%"],
+                opacity: isActive ? [1] : [0],
+              },
+              default: {
+                //width: ["100%"],
+                opacity: isActive ? [1] : [0],
+              },
+              focused: {
+                //width: ["100%"]
+              },
+            },
             transition: {
               type: "spring",
               duration: navigationDuration,
               delay: navigationDelay + 0.8 + (applySectionDelay ? sectionDelay : 0),
             },
+            //animate: { width: ["0%", "100%"], opacity: isActive ? [1] : [0] },
           };
         },
         navLinkPage: {},
@@ -137,6 +170,26 @@ export const AnimCfg = {
           },
         },
       };
+    },
+
+    transition: {
+      transitionText: (animState: string) => {
+        return {
+          animate: animState,
+          variants: {
+            enter: {
+              y: ["-1000%", 0],
+              opacity: [0, 0.9, 1],
+              transition: { type: "string", duration: transitionDuration, delay: transitionDelay },
+            },
+            leave: {
+              y: [0, "1000%"],
+              opacity: [1, 0.9, 0],
+              transition: { type: "string", duration: transitionDuration * 0.66, delay: transitionDelay },
+            },
+          },
+        };
+      },
     },
   },
   intro: {
@@ -261,19 +314,73 @@ export const AnimCfg = {
   },
   whatWeDo: {
     whatWeDoContent: {
-      linesText: {
+      linesWithDetail: {
         line: (index: any) => {
           return {
-            animate: { y: [70, 0] },
-            transition: {
-              type: "spring",
-              duration: textDuration,
-              delay: textDelay + index * 0.1 + sectionDelay,
+            variants: {
+              initial: {
+                y: [70, 0],
+                transition: {
+                  type: "spring",
+                  duration: textDuration,
+                  delay: textDelay + index * 0.1 + sectionDelay,
+                },
+              },
+              default: {
+                opacity: 1,
+                color: "#ffffffff",
+                textShadow: "0 0 0 0",
+                //transition: { type: "string", duration: textDuration / 3 },
+              },
+              unfocus: {
+                opacity: 0.5,
+                color: "#000000ff",
+                textShadow: "0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white",
+                transition: { type: "string", duration: textDuration / 3 },
+              },
+              focus: {
+                opacity: 1,
+                color: "#ffffffff",
+                textShadow: "0 0 0 white, 0 0 0 white, 0 0 0 white, 0 0 0 white",
+                transition: { type: "string", duration: textDuration / 3 },
+              },
             },
           };
         },
-      }
-    }
+      detail: {
+        variants: {
+          initial: {
+            opacity: 0,
+            transition: {
+              type: "spring",
+              duration: textDuration,
+              delay: textDelay * 0.1 + sectionDelay,
+            },
+          },
+          default: {
+            opacity: 0,
+            backgroundColor: "transparent",
+            transition: { type: "string", duration: textDuration / 3 },
+          },
+          focus: {
+            opacity: 1,
+            backgroundColor: "rgba(0,0,0,0.3)",
+            transition: { type: "string", duration: textDuration / 3 },
+          },
+        },
+      },
+      },
+      /*pageNumber: {
+        pageIndicator: {
+          //animate: { x: [-60, 0] },
+          //transition: { type: "spring", duration: pageNumberDuration, delay: pageNumberDelay },
+        },
+        pageNumber: {
+          //animate: { x: [-60, 0], scale: [0.2, 1] },
+          //transition: { type: "spring", duration: pageNumberDuration, delay: pageNumberDelay },
+        },
+      },*/
+    },
   },
   ourTools: {},
   contact: {},

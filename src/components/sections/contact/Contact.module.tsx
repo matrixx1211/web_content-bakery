@@ -6,7 +6,7 @@ export default function Contact() {
   return (
     <section id="contact" className="contentContainer">
       <Header onlyActive={true} />
-      <Navigation onlyActive={true} />
+      <Navigation onlyActive={true} activePage={5}/>
     </section>
   );
 }
