@@ -16,12 +16,12 @@ export default function Contact() {
     return (
       <>
         <div className={style.linesContainer}>
-          <Lines lines={topLines} anim={anim ? anim.lines : null} style={style} />
+          <Lines lines={topLines} anim={anim ? anim.topLines : null} style={style} />
           <Lines
             lines={bottomLines}
-            anim={anim ? anim.lines : null}
+            anim={anim ? anim.bottomLines : null}
             style={style}
-            customLines={[{ index: 1, childAfter: <a className={style.email} href="mailto:karel@contentbakery.cz">E-MAIL.</a> }]}
+            customLines={[{ index: 1, childAfter: <a className={style.email} href="mailto:info@contentbakery.cz">E-MAIL.</a> }]}
           />
         </div>
         <div></div>

@@ -492,7 +492,7 @@ export const AnimCfg = {
   },
   contact: {
     contactContent: {
-      lines: {
+      topLines: {
         line: (index: any) => {
           return {
             animate: { y: [65, 0] },
@@ -500,6 +500,18 @@ export const AnimCfg = {
               type: "spring",
               duration: textDuration,
               delay: textDelay + index * 0.1 + sectionDelay,
+            },
+          };
+        },
+      },
+      bottomLines: {
+        line: (index: any) => {
+          return {
+            animate: { y: [65, 0] },
+            transition: {
+              type: "spring",
+              duration: textDuration,
+              delay: textDelay + (index + 5) * 0.1 + sectionDelay,
             },
           };
         },
