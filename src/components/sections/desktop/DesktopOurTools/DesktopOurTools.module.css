@@ -5,7 +5,7 @@
   padding: 0;
   box-sizing: border-box;
   overflow: hidden;
-  /*cursor: none;*/
+  /*cursor: none;*/ /*TODO: make it work in production*/
 }
 
 html {
@@ -88,5 +88,74 @@ section {
 }
 
 /* MIXINY */
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  background-color: var(--ourtools-background);
+  color: var(--ourtools-text-color);
+}
+.contentContainer .content {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  width: 80%;
+  gap: var(--spacing-double);
+}
+.contentContainer .content .bigLinesText {
+  font-family: "nimbus-sans-extended", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 20%;
+  overflow: visible;
+  margin-right: calc(var(--spacing-double) * 1.5);
+}
+.contentContainer .content .bigLinesText .lineText {
+  font-size: 7rem;
+  line-height: 5.5rem;
+  letter-spacing: 0;
+  display: inline-block;
+  overflow: visible;
+}
+.contentContainer .content .pageIndicator {
+  font-family: area-normal, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  border-bottom: 0.1rem solid;
+  z-index: 10;
+  overflow: visible;
+  font-size: 1.6rem;
+  width: 0;
+}
+.contentContainer .content .pageIndicator .pageNumber {
+  float: right;
+  overflow: visible;
+  padding-bottom: var(--spacing-quarter);
+}
+.contentContainer .content .smallLinesText {
+  font-family: area-normal, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 20%;
+  overflow: visible;
+  margin-right: calc(var(--spacing-double) * 1.5);
+}
+.contentContainer .content .smallLinesText .lineText {
+  font-size: 1.7rem;
+  line-height: 2.6rem;
+  letter-spacing: 0;
+  display: inline-block;
+  overflow: visible;
+}
 
-/*# sourceMappingURL=App.css.map */
+/*# sourceMappingURL=DesktopOurTools.module.css.map */

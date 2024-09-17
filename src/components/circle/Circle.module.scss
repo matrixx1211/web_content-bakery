@@ -14,18 +14,20 @@
     overflow: visible;
 
     .circle {
+      opacity: 0;
       width: 100%;
       height: 100%;
       border-radius: 50%;
-      border: 2px solid var(--content-text-color);
+      border: 0.2rem solid var(--content-text-color);
       position: absolute;
     }
 
     .circleDark {
+      opacity: 0;
       width: 100%;
       height: 100%;
       border-radius: 50%;
-      border: 2px solid var(--ourtools-text-color);
+      border: 0.2rem solid var(--ourtools-text-color);
       position: absolute;
     }
 

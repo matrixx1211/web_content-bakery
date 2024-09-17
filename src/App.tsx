@@ -1,29 +1,61 @@
 import "./App.scss";
-import { lazy } from "react";
+import { lazy, useEffect, useState } from "react";
+import { onboardingDuration } from "./assets/config/AnimCfg.tsx";
+import { scrollToElementWithId } from "./components/helpers/Helpers.tsx";
+import { useLocation } from "react-router-dom";
+const Onboarding = lazy(() => import("./components/sections/Onboarding/Onboarding.module.tsx"));
 const Cursor = lazy(() => import("./components/cursor/Cursor.module.tsx"));
-const Intro = lazy(() => import("./components/sections/intro/Intro.module.tsx"));
-const WhoWeAre = lazy(() => import("./components/sections/whoweare/WhoWeAre.module.tsx"));
-const WhatWeDo = lazy(() => import("./components/sections/whatwedo/WhatWeDo.module.tsx"));
-const OurTools = lazy(() => import("./components/sections/ourtools/OurTools.module.tsx"));
-const OurTools2 = lazy(() => import("./components/sections/ourtools2/OurTools2.module.tsx"));
-const Contact = lazy(() => import("./components/sections/contact/Contact.module.tsx"));
-const Transition = lazy(() => import("./components/sections/transition/Transition.module.tsx"));
+const DesktopIntro = lazy(() => import("./components/sections/desktop/DesktopIntro/DesktopIntro.module.tsx"));
+const DesktopWhoWeAre = lazy(() => import("./components/sections/desktop/DesktopWhoWeAre/DesktopWhoWeAre.module.tsx"));
+const DesktopWhatWeDo = lazy(() => import("./components/sections/desktop/DesktopWhatWeDo/DesktopWhatWeDo.module.tsx"));
+const DesktopOurTools = lazy(() => import("./components/sections/desktop/DesktopOurTools/DesktopOurTools.module.tsx"));
+const DesktopOurTools2 = lazy(() => import("./components/sections/desktop/DesktopOurTools2/DesktopOurTools2.module.tsx"));
+const DesktopContact = lazy(() => import("./components/sections/desktop/DesktopContact/DesktopContact.module.tsx"));
+const DesktopTransition = lazy(() => import("./components/sections/desktop/DesktopTransition/DesktopTransition.module.tsx"));
 
 export default function App() {
-  return (
-    <>
-      <Cursor />
+  const [loading, setLoading] = useState(true);
+  const location = useLocation();
 
-      <Intro />
-      <Transition toId="before-whoweare" pageNumber="02" pageTitle="WHO WE ARE" />
-      <WhoWeAre />
-      <Transition toId="before-whatwedo" pageNumber="03" pageTitle="WHAT WE DO" />
-      <WhatWeDo />
-      <Transition toId="before-ourtools" pageNumber="04" pageTitle="OUR TOOLS" />
-      <OurTools />
-      <OurTools2 />
-      <Transition toId="before-contact" pageNumber="05" pageTitle="CONTACT" />
-      <Contact />
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      if (loading) setLoading(false);
+    }, onboardingDuration * 1000);
+    return () => clearTimeout(timeoutId);
+  }, [loading]);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(
+      () => {
+        if (location.hash) scrollToElementWithId(null, location.hash, 0);
+      },
+      onboardingDuration * 1000 + 200,
+    );
+    return () => clearTimeout(timeoutId);
+  }, [location]);
+
+  return loading ? (
+    <Onboarding />
+  ) : (
+    <>
+      {window.innerWidth <= 1536 ? (
+        <>{/*<MobileIntro />*/}</>
+      ) : (
+        <>
+          <Cursor />
+
+          <DesktopIntro />
+          <DesktopTransition toId="Before-DesktopWhoWeAre" pageNumber="02" pageTitle="WHO WE ARE" nextSectionId="DesktopWhoWeAre" />
+          <DesktopWhoWeAre />
+          <DesktopTransition toId="Before-DesktopWhatWeDo" pageNumber="03" pageTitle="WHAT WE DO" nextSectionId="DesktopWhatWeDo" />
+          <DesktopWhatWeDo />
+          <DesktopTransition toId="Before-DesktopOurTools" pageNumber="04" pageTitle="OUR TOOLS" nextSectionId="DesktopOurTools" />
+          <DesktopOurTools />
+          <DesktopOurTools2 />
+          <DesktopTransition toId="Before-DesktopContact" pageNumber="05" pageTitle="CONTACT" nextSectionId="DesktopContact" />
+          <DesktopContact />
+        </>
+      )}
     </>
   );
 }

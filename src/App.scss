@@ -5,7 +5,7 @@
   padding: 0;
   box-sizing: border-box;
   overflow: hidden;
-  /*cursor: none;*/
+  /*cursor: none;*/ /*TODO: make it work in production*/
 }
 
 html {
@@ -34,20 +34,20 @@ body {
   --ourtools-background: #f4f4f4ff;
   --ourtools-text-color: #000000ff;
 
-  --spacing-double: 32px;
-  --spacing-full: 16px;
-  --spacing-half: 8px;
-  --spacing-quarter: 4px;
-  --header-height: 64px;
-  --nav-y-offset: 100px;
-  --border-radius: 8px;
-  --cursor-width: 24px;
-  --cursor-height: 24px;
-  --cursor-thickness: 3px;
-  --cursor-length: 8px;
+  --spacing-double: 3.2rem;
+  --spacing-full: 1.6rem;
+  --spacing-half: 0.8rem;
+  --spacing-quarter: 0.4rem;
+  --header-height: 6.4rem;
+  --nav-y-offset: 10rem;
+  --border-radius: 0.8rem;
+  --cursor-width: 2.4rem;
+  --cursor-height: 2.4rem;
+  --cursor-thickness: 0.3rem;
+  --cursor-length: 0.8rem;
   --cursor-x-center: calc((var(--cursor-width) / 2) - (var(--cursor-thickness) / 2));
   --cursor-y-center: calc((var(--cursor-height) / 2) - (var(--cursor-thickness) / 2));
-  --circle-size: 88px;
+  --circle-size: 8.8rem;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -89,8 +89,8 @@ body {
 
 /* Styly k sekcím */
 section {
-  width: calc(100vw + 1px);
-  height: calc(100vh + 1px);
+  width: calc(100vw + 0.1rem);
+  height: calc(100vh + 0.1rem);
   overflow: visible;
 }
 

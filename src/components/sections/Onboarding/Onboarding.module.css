@@ -1,0 +1,23 @@
+.boardingContainer {
+  width: calc(100vw + 0.1rem);
+  height: calc(100vh + 0.1rem);
+  position: absolute;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  background: var(--content-background);
+  margin: auto;
+  /*inset: 0 auto;*/
+  left: 0;
+  right: 0;
+}
+
+.loader {
+  width: 40vw;
+  aspect-ratio: 1;
+  margin: auto;
+  object-fit: contain;
+}
+
+/*# sourceMappingURL=Onboarding.module.css.map */

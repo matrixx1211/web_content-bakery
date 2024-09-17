@@ -39,6 +39,7 @@
   text-decoration: none;
   color: inherit;
   overflow: visible;
+  transform: translateX(18rem);
 
   .navLink {
     font-size: 1.3rem;
@@ -48,15 +49,17 @@
     grid-column: 1;
     grid-row: 2;
     position: relative;
+    overflow: visible;
 
     .navLinkLine {
       width: 0;
       position: absolute;
       left: 0;
       background: var(--nav-active-crossed-color);
-      height: 2px;
+      height: 0.2rem;
       top: 50%;
       transform: translate(0, -100%);
+      opacity: 0;
     }
   }
 

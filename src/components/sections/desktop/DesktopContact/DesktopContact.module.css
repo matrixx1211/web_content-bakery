@@ -5,7 +5,7 @@
   padding: 0;
   box-sizing: border-box;
   overflow: hidden;
-  /*cursor: none;*/
+  /*cursor: none;*/ /*TODO: make it work in production*/
 }
 
 html {
@@ -88,5 +88,39 @@ section {
 }
 
 /* MIXINY */
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+.contentContainer .linesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 5.5rem;
+}
+.contentContainer .linesContainer .email {
+  color: var(--content-text-color);
+}
+.contentContainer .linesContainer .linesText {
+  font-family: "nimbus-sans-extended", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: visible;
+  margin-right: calc(var(--spacing-double) * 1.5);
+}
+.contentContainer .linesContainer .linesText .lineText {
+  font-size: 7rem;
+  transform: translateY(6.5rem);
+  line-height: 8rem;
+  letter-spacing: 0;
+  display: inline-block;
+  overflow: visible;
+}
 
-/*# sourceMappingURL=App.css.map */
+/*# sourceMappingURL=DesktopContact.module.css.map */

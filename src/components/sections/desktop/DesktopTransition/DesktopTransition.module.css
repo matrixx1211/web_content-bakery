@@ -5,7 +5,7 @@
   padding: 0;
   box-sizing: border-box;
   overflow: hidden;
-  /*cursor: none;*/
+  /*cursor: none;*/ /*TODO: make it work in production*/
 }
 
 html {
@@ -88,5 +88,25 @@ section {
 }
 
 /* MIXINY */
+.transitionContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.transitionContainer .pageNumber {
+  font-size: 3.2rem;
+  line-height: 6.4rem;
+  padding: 3.2rem 1.6rem 0 0;
+  font-family: area-normal, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+.transitionContainer .pageTitle {
+  font-size: 6.4rem;
+  line-height: 6.4rem;
+  font-family: "nimbus-sans-extended", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
 
-/*# sourceMappingURL=App.css.map */
+/*# sourceMappingURL=DesktopTransition.module.css.map */

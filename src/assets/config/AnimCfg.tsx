@@ -11,28 +11,45 @@ const params = new URLSearchParams(window.location.search);
 const paramDelay = parseFloat(params.get("delay") ?? "0");
 const paramDuration = parseFloat(params.get("duration") ?? "1");
 
+//0.85 * paramDuration
 const textDuration = 0.85 * paramDuration;
+//0.2 + paramDelay
 const textDelay = 0.2 + paramDelay;
 
+//0.3 * paramDuration
 const imagesDuration = 0.3 * paramDuration;
+//0.8 + paramDelay
 const imagesDelay = 0.8 + paramDelay;
 
+//0.75 * paramDuration
 const headerDuration = 0.75 * paramDuration;
+//0.2 + paramDelay
 const headerDelay = 0.2 + paramDelay;
 
+//0.5 * paramDuration
 const navigationDuration = 0.5 * paramDuration;
+//0.8 + paramDelay
 const navigationDelay = 0.8 + paramDelay;
 
+//0.5 * paramDuration
 const pageNumberDuration = 0.5 * paramDuration;
+//0.8 + paramDelay
 const pageNumberDelay = 0.8 + paramDelay;
 
+//0.5 * paramDuration
 const circleDuration = 0.5 * paramDuration;
+//1 + paramDelay
 const circleDelay = 1 + paramDelay;
 
+//1
 const transitionDuration = 1;
+//0.5
 const transitionDelay = 0.5;
 
+//1
 const sectionDelay = 1;
+
+export const onboardingDuration = 3;
 
 export const AnimCfg = {
   general: {
@@ -192,330 +209,365 @@ export const AnimCfg = {
       },
     },
   },
-  intro: {
-    introContent: {
-      lines: {
-        introText: (isFocused: any) => {
-          return {
-            animate: {
-              zIndex: isFocused ? 0 : 10,
-            },
-            transition: { type: "string", duration: textDuration },
-          };
+  desktop: {
+    intro: {
+      introContent: {
+        lines: {
+          introText: (isFocused: any) => {
+            return {
+              animate: {
+                zIndex: isFocused ? 0 : 10,
+              },
+              transition: { type: "string", duration: textDuration },
+            };
+          },
+          line: (index: any) => {
+            return {
+              variants: {
+                initial: {
+                  y: [100, 0],
+                  color: "#fff",
+                  textShadow: "0 0 0",
+                  transition: {
+                    type: "spring",
+                    duration: textDuration,
+                    delay: textDelay + index * 0.1,
+                  },
+                },
+                afterLoad: {
+                  y: [0],
+                  color: "#fff",
+                  textShadow: "0 0 0",
+                  transition: { duration: 0 },
+                },
+                default: {
+                  y: [0],
+                  color: "#fff",
+                  textShadow: "0 0 0",
+                  transition: {
+                    type: "spring",
+                    duration: textDuration,
+                  },
+                },
+                focus: {
+                  y: [0],
+                  color: "#000",
+                  textShadow: "0 0 0.2rem white, 0 0 0.2rem white, 0 0 0.2rem white, 0 0 0.2rem white",
+                  overflow: "visible",
+                  transition: {
+                    type: "spring",
+                    duration: textDuration,
+                  },
+                },
+              },
+            };
+          },
         },
-        line: (index: any) => {
-          return {
-            variants: {
-              initial: {
-                y: [100, 0],
-                transition: {
-                  type: "spring",
-                  duration: textDuration,
-                  delay: textDelay + index * 0.1,
-                },
-              },
-              default: {
-                color: "#ffffffff",
-                textShadow: "0 0 0 white, 0 0 0 white, 0 0 0 white, 0 0 0 white",
-                transition: {
-                  type: "spring",
-                  duration: textDuration,
-                },
-              },
-              focus: {
-                color: "#000000ff",
-                textShadow: "0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white",
-                overflow: "visible",
-                transition: {
-                  type: "spring",
-                  duration: textDuration,
-                },
-              },
-            },
-          };
-        },
-      },
-      focusableImage: {
-        focusableImage: () => {
-          const delay = Math.random() * (0.6 - 0.1) + 0.1;
+        focusableImage: {
+          focusableImage: () => {
+            const delay = Math.random() * (0.6 - 0.1) + 0.1;
 
-          return {
-            variants: {
-              initial: {
-                opacity: [0, 0.5],
-                filter: "blur(2px)",
-                transition: { duration: imagesDuration, delay: imagesDelay + delay },
-              },
-              default: {
-                opacity: 0.5,
-                scale: 1,
-                filter: "blur(2px)",
-                transition: { type: "string", duration: imagesDuration },
-              },
-              focus: {
-                opacity: 1,
-                scale: 1.1,
-                filter: "blur(0)",
-                transition: { type: "string", duration: imagesDuration },
-              },
-            },
-          };
-        },
-      },
-      pageNumber: {
-        pageIndicator: {
-          animate: { x: [-60, 0] },
-          transition: { type: "spring", duration: pageNumberDuration, delay: pageNumberDelay },
-        },
-        pageNumber: {
-          animate: { x: [-60, 0], scale: [0.2, 1] },
-          transition: { type: "spring", duration: pageNumberDuration, delay: pageNumberDelay },
-        },
-      },
-    },
-  },
-  whoWeAre: {
-    whoWeAreContent: {
-      bigLines: {
-        line: (index: any) => {
-          return {
-            animate: { y: [55, 0] },
-            transition: {
-              type: "spring",
-              duration: textDuration,
-              delay: textDelay + index * 0.1 + sectionDelay,
-            },
-          };
-        },
-      },
-      pageNumber: {
-        pageIndicator: {
-          animate: { width: ["0%", "100%"] },
-          transition: { type: "spring", duration: pageNumberDuration + 0.5, delay: pageNumberDelay + sectionDelay },
-        },
-        pageNumber: {
-          animate: { scale: [0, 1] },
-          transition: { type: "spring", duration: pageNumberDuration + 0.5, delay: pageNumberDelay + sectionDelay },
-        },
-      },
-      smallLines: {
-        line: (index: any) => {
-          return {
-            animate: { y: [25, 0] },
-            transition: {
-              type: "spring",
-              duration: textDuration,
-              delay: textDelay + index * 0.1 + sectionDelay,
-            },
-          };
-        },
-      },
-    },
-  },
-  whatWeDo: {
-    whatWeDoContent: {
-      linesWithDetail: {
-        line: (index: any) => {
-          return {
-            variants: {
-              initial: {
-                y: [70, 0],
-                transition: {
-                  type: "spring",
-                  duration: textDuration,
-                  delay: textDelay + index * 0.1 + sectionDelay,
+            return {
+              variants: {
+                initial: {
+                  opacity: [0, 0.5],
+                  filter: "blur(2px)",
+                  transition: { duration: imagesDuration, delay: imagesDelay + delay },
+                },
+                default: {
+                  opacity: 0.5,
+                  scale: 1,
+                  filter: "blur(2px)",
+                  transition: { type: "string", duration: imagesDuration },
+                },
+                focus: {
+                  opacity: 1,
+                  scale: 1.1,
+                  filter: "blur(0)",
+                  transition: { type: "string", duration: imagesDuration },
                 },
               },
-              default: {
-                opacity: 1,
-                color: "#ffffffff",
-                textShadow: "0 0 0 0",
-                //transition: { type: "string", duration: textDuration / 3 },
-              },
-              unfocus: {
-                opacity: 0.5,
-                color: "#000000ff",
-                textShadow: "0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white",
-                transition: { type: "string", duration: textDuration / 3 },
-              },
-              focus: {
-                opacity: 1,
-                color: "#ffffffff",
-                textShadow: "0 0 0 white, 0 0 0 white, 0 0 0 white, 0 0 0 white",
-                transition: { type: "string", duration: textDuration / 3 },
-              },
-            },
-          };
+            };
+          },
         },
-        detail: {
-          variants: {
-            initial: {
-              opacity: 0,
+        pageNumber: {
+          pageIndicator: {
+            animate: { x: [-60, 0] },
+            transition: { type: "spring", duration: pageNumberDuration, delay: pageNumberDelay },
+          },
+          pageNumber: {
+            animate: { x: [-60, 0], scale: [0.2, 1] },
+            transition: { type: "spring", duration: pageNumberDuration, delay: pageNumberDelay },
+          },
+        },
+      },
+    },
+    whoWeAre: {
+      whoWeAreContent: {
+        bigLines: {
+          line: (index: any) => {
+            return {
+              animate: { y: [55, 0] },
               transition: {
                 type: "spring",
                 duration: textDuration,
-                delay: textDelay * 0.1 + sectionDelay,
+                delay: textDelay + index * 0.1 + sectionDelay,
+              },
+            };
+          },
+        },
+        pageNumber: {
+          pageIndicator: {
+            animate: { width: ["0%", "100%"] },
+            transition: { type: "spring", duration: pageNumberDuration + 0.5, delay: pageNumberDelay + sectionDelay },
+          },
+          pageNumber: {
+            animate: { scale: [0, 1] },
+            transition: { type: "spring", duration: pageNumberDuration + 0.5, delay: pageNumberDelay + sectionDelay },
+          },
+        },
+        smallLines: {
+          line: (index: any) => {
+            return {
+              animate: { y: [26, 0] },
+              transition: {
+                type: "spring",
+                duration: textDuration,
+                delay: textDelay + index * 0.1 + sectionDelay,
+              },
+            };
+          },
+        },
+      },
+    },
+    whatWeDo: {
+      whatWeDoContent: {
+        linesWithDetail: {
+          lineContainer: {
+            variants: {
+              initial: {
+                overflow: ["hidden"],
+                transition: { duration: textDuration * 0.4 },
+              },
+              default: {
+                overflow: ["visible"],
+                width: "fit-content",
+                transition: { duration: 0 },
+              },
+              focus: {
+                overflow: ["visible"],
+                width: "fit-content",
+                transition: { duration: 0 },
               },
             },
-            default: {
-              opacity: 0,
-              backgroundColor: "transparent",
-              transition: { type: "string", duration: textDuration / 3 },
-            },
-            focus: {
-              opacity: 1,
-              backgroundColor: "rgba(0,0,0,0.3)",
-              transition: { type: "string", duration: textDuration / 3 },
+          },
+          line: (index: any) => {
+            return {
+              variants: {
+                initial: {
+                  y: [70, 0],
+                  color: "#fff",
+                  opacity: [1],
+                  textShadow: "0 0 0",
+                  transition: {
+                    duration: textDuration * 0.4,
+                    delay: textDelay + index * 0.1 + sectionDelay,
+                  },
+                },
+                default: {
+                  y: 0,
+                  opacity: 1,
+                  color: "#fff",
+                  textShadow: "0 0 0",
+                  transition: { duration: 0 },
+                },
+                unfocus: {
+                  y: 0,
+                  opacity: 0.35,
+                  color: "#000",
+                  transition: { type: "string", duration: textDuration * 0.3 },
+                },
+                focus: {
+                  y: 0,
+                  opacity: 1,
+                  color: "#fff",
+                  textShadow: "0 0 0",
+                  transition: { type: "string", duration: textDuration * 0.3 },
+                },
+              },
+            };
+          },
+          detail: {
+            variants: {
+              initial: {
+                opacity: 0,
+                transition: {
+                  type: "spring",
+                  duration: textDuration,
+                  delay: textDelay * 0.1 + sectionDelay,
+                },
+              },
+              default: {
+                opacity: [0],
+                transition: { duration: 0 },
+              },
+              focus: {
+                opacity: [0, 1],
+                backgroundColor: "rgba(0,0,0,0.3)",
+                transition: { duration: textDuration * 0.5 },
+              },
             },
           },
         },
       },
-      /*pageNumber: {
-        pageIndicator: {
-          //animate: { x: [-60, 0] },
-          //transition: { type: "spring", duration: pageNumberDuration, delay: pageNumberDelay },
-        },
-        pageNumber: {
-          //animate: { x: [-60, 0], scale: [0.2, 1] },
-          //transition: { type: "spring", duration: pageNumberDuration, delay: pageNumberDelay },
-        },
-      },*/
     },
-  },
-  ourTools: {
-    ourToolsContent: {
-      bigLines: {
-        line: (index: any) => {
-          return {
-            animate: { y: [55, 0] },
-            transition: {
-              type: "spring",
-              duration: textDuration,
-              delay: textDelay + index * 0.1 + sectionDelay,
-            },
-          };
-        },
-      },
-      pageNumber: {
-        pageIndicator: {
-          animate: { width: ["0%", "100%"] },
-          transition: { type: "spring", duration: pageNumberDuration + 0.5, delay: pageNumberDelay + sectionDelay },
-        },
-        pageNumber: {
-          animate: { scale: [0, 1] },
-          transition: { type: "spring", duration: pageNumberDuration + 0.5, delay: pageNumberDelay + sectionDelay },
-        },
-      },
-      smallLines: {
-        line: (index: any) => {
-          return {
-            animate: { y: [25, 0] },
-            transition: {
-              type: "spring",
-              duration: textDuration,
-              delay: textDelay + index * 0.1 + sectionDelay,
-            },
-          };
-        },
-      },
-    },
-  },
-  ourTools2: {
-    ourTools2Content: {
-      linesWithDetail: {
-        line: (index: any) => {
-          return {
-            variants: {
-              initial: {
-                y: [70, 0],
-                transition: {
-                  type: "spring",
-                  duration: textDuration,
-                  delay: textDelay + index * 0.1 + sectionDelay,
-                },
-              },
-              default: {
-                opacity: 1,
-                color: "#000000ff",
-                textShadow: "0 0 0 0",
-                //transition: { type: "string", duration: textDuration / 3 },
-              },
-              unfocus: {
-                opacity: 0.5,
-                color: "#f4f4f4ff",
-                textShadow: "0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black",
-                transition: { type: "string", duration: textDuration / 3 },
-              },
-              focus: {
-                opacity: 1,
-                color: "#000000ff",
-                textShadow: "0 0 0 black, 0 0 0 black, 0 0 0 black, 0 0 0 black",
-                transition: { type: "string", duration: textDuration / 3 },
-              },
-            },
-          };
-        },
-        detail: {
-          variants: {
-            initial: {
-              opacity: 0,
+    ourTools: {
+      ourToolsContent: {
+        bigLines: {
+          line: (index: any) => {
+            return {
+              animate: { y: [55, 0] },
               transition: {
                 type: "spring",
                 duration: textDuration,
-                delay: textDelay * 0.1 + sectionDelay,
+                delay: textDelay + index * 0.1 + sectionDelay,
+              },
+            };
+          },
+        },
+        pageNumber: {
+          pageIndicator: {
+            animate: { width: ["0%", "100%"] },
+            transition: { type: "spring", duration: pageNumberDuration + 0.5, delay: pageNumberDelay + sectionDelay },
+          },
+          pageNumber: {
+            animate: { scale: [0, 1] },
+            transition: { type: "spring", duration: pageNumberDuration + 0.5, delay: pageNumberDelay + sectionDelay },
+          },
+        },
+        smallLines: {
+          line: (index: any) => {
+            return {
+              animate: { y: [25, 0] },
+              transition: {
+                type: "spring",
+                duration: textDuration,
+                delay: textDelay + index * 0.1 + sectionDelay,
+              },
+            };
+          },
+        },
+      },
+    },
+    ourTools2: {
+      ourTools2Content: {
+        linesWithDetail: {
+          lineContainer: {
+            variants: {
+              initial: {
+                overflow: ["hidden"],
+                transition: { duration: textDuration * 0.4 },
+              },
+              default: {
+                overflow: ["visible"],
+                width: "fit-content",
+                transition: { duration: 0 },
+              },
+              focus: {
+                overflow: ["visible"],
+                width: "fit-content",
+                transition: { duration: 0 },
               },
             },
-            default: {
-              opacity: 0,
-              backgroundColor: "transparent",
-              transition: { type: "string", duration: textDuration / 3 },
-            },
-            focus: {
-              opacity: 1,
-              backgroundColor: "rgba(244,244,244,0.2)",
-              transition: { type: "string", duration: textDuration / 3 },
+          },
+          line: (index: any) => {
+            return {
+              variants: {
+                initial: {
+                  y: [70, 0],
+                  color: "#000",
+                  opacity: [1],
+                  textShadow: "0 0 0",
+                  transition: {
+                    duration: textDuration * 0.4,
+                    delay: textDelay + index * 0.1 + sectionDelay,
+                  },
+                },
+                default: {
+                  y: 0,
+                  opacity: 1,
+                  color: "#000",
+                  textShadow: "0 0 0",
+                  transition: { duration: 0 },
+                },
+                unfocus: {
+                  y: 0,
+                  opacity: 0.35,
+                  color: "#fff",
+                  transition: { type: "string", duration: textDuration * 0.3 },
+                },
+                focus: {
+                  y: 0,
+                  opacity: 1,
+                  color: "#000",
+                  textShadow: "0 0 0",
+                  transition: { type: "string", duration: textDuration * 0.3 },
+                },
+              },
+            };
+          },
+          detail: {
+            variants: {
+              initial: {
+                opacity: 0,
+                transition: {
+                  type: "spring",
+                  duration: textDuration,
+                  delay: textDelay * 0.1 + sectionDelay,
+                },
+              },
+              default: {
+                opacity: [0],
+                transition: { duration: 0 },
+              },
+              focus: {
+                opacity: [0, 1],
+                backgroundColor: "rgba(244,244,244,0.3)",
+                transition: { duration: textDuration * 0.5 },
+              },
             },
           },
         },
       },
-      /*pageNumber: {
-        pageIndicator: {
-          //animate: { x: [-60, 0] },
-          //transition: { type: "spring", duration: pageNumberDuration, delay: pageNumberDelay },
-        },
-        pageNumber: {
-          //animate: { x: [-60, 0], scale: [0.2, 1] },
-          //transition: { type: "spring", duration: pageNumberDuration, delay: pageNumberDelay },
-        },
-      },*/
     },
-  },
-  contact: {
-    contactContent: {
-      topLines: {
-        line: (index: any) => {
-          return {
-            animate: { y: [65, 0] },
-            transition: {
-              type: "spring",
-              duration: textDuration,
-              delay: textDelay + index * 0.1 + sectionDelay,
-            },
-          };
+    contact: {
+      contactContent: {
+        topLines: {
+          line: (index: any) => {
+            return {
+              animate: { y: [65, 0] },
+              transition: {
+                type: "spring",
+                duration: textDuration,
+                delay: textDelay + index * 0.1 + sectionDelay,
+              },
+            };
+          },
         },
-      },
-      bottomLines: {
-        line: (index: any) => {
-          return {
-            animate: { y: [65, 0] },
-            transition: {
-              type: "spring",
-              duration: textDuration,
-              delay: textDelay + (index + 5) * 0.1 + sectionDelay,
-            },
-          };
+        bottomLines: {
+          line: (index: any) => {
+            return {
+              animate: { y: [65, 0] },
+              transition: {
+                type: "spring",
+                duration: textDuration,
+                delay: textDelay + (index + 5) * 0.1 + sectionDelay,
+              },
+            };
+          },
         },
       },
     },
   },
+  mobile: {},
 };

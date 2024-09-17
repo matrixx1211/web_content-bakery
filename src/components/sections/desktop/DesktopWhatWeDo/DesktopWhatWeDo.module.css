@@ -5,7 +5,7 @@
   padding: 0;
   box-sizing: border-box;
   overflow: hidden;
-  /*cursor: none;*/
+  /*cursor: none;*/ /*TODO: make it work in production*/
 }
 
 html {
@@ -88,5 +88,62 @@ section {
 }
 
 /* MIXINY */
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+.contentContainer .linesText {
+  font-family: "nimbus-sans-extended", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: visible;
+}
+.contentContainer .linesText .lineContainer {
+  position: relative;
+  overflow: hidden;
+}
+.contentContainer .linesText .lineContainer .lineTitle {
+  font-size: 7rem;
+  line-height: 9.1rem;
+  letter-spacing: 0;
+  display: inline-block;
+  overflow: visible;
+  transform: translateY(70px);
+  color: #000;
+  text-shadow: 0 0 0.1rem #fff, 0 0 0.1rem #fff, 0 0 0.1rem #fff, 0 0 0.1rem #fff;
+}
+.contentContainer .linesText .lineContainer .lineDetail {
+  font-family: area-normal, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 2rem;
+  line-height: 3rem;
+  transform: translateY(100%);
+  overflow: visible !important;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+.contentContainer .pageIndicator {
+  font-family: area-normal, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 3.2rem;
+  transform: translate(-1rem);
+  display: inline-block;
+}
+.contentContainer .pageIndicator .pageNumber {
+  padding-bottom: var(--spacing-quarter);
+}
 
-/*# sourceMappingURL=App.css.map */
+/*# sourceMappingURL=DesktopWhatWeDo.module.css.map */
