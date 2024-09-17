@@ -5,7 +5,7 @@
   padding: 0;
   box-sizing: border-box;
   overflow: hidden;
-  /*cursor: none;*/ /*TODO: make it work in production*/
+  cursor: none;
 }
 
 html {
@@ -50,7 +50,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* TODO: předělat všude na include a použít mixin  */
 .area400 {
   font-family: area-normal, sans-serif;
   font-weight: 400;

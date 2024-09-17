@@ -5,7 +5,7 @@
   padding: 0;
   box-sizing: border-box;
   overflow: hidden;
-  /*cursor: none;*/ /*TODO: make it work in production*/
+  cursor: none;
 }
 
 html {
