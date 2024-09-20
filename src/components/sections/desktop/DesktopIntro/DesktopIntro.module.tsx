@@ -20,9 +20,10 @@ type FocusableImageType = {
   isFocused: boolean;
   variant: string;
   anim: any;
+  index: number;
 };
 
-function FocusableImage({ src, x, y, onMouseEnter, onMouseLeave, isFocused, variant, anim }: FocusableImageType) {
+function FocusableImage({ src, x, y, onMouseEnter, onMouseLeave, isFocused, variant, anim, index }: FocusableImageType) {
   const [random, setRandom] = useState({ x: 10, y: 10, mt: 100, mb: 200 });
   const intervalX = { min: 15, max: 25 };
   const intervalY = { min: 15, max: 25 };
@@ -55,7 +56,7 @@ function FocusableImage({ src, x, y, onMouseEnter, onMouseLeave, isFocused, vari
       src={src}
       alt=""
       style={{ ...pos }}
-      animate={variant === "initial" ? "initial" : isFocused ? variant : "default"}
+      animate={variant === "initial" ? "initial" : index !== -1 ? (isFocused ? variant : "unfocused") : "default"}
       {...(anim ? anim.focusableImage() : {})}
     />
   );
@@ -63,7 +64,7 @@ function FocusableImage({ src, x, y, onMouseEnter, onMouseLeave, isFocused, vari
 
 function FocusableLines({ imageFocus, anim }: { imageFocus: any; anim: any }) {
   const lines = ["WE ARE", "MODERN", "DIGITAL", "FACTORY", "THAT HELPS", "TO OPTIMIZE,", "MODERNIZE", "AND GROW."];
-
+  console.log(imageFocus.anim);
   function Line({ text, index }: { text: string; index: number }) {
     return (
       <div>
@@ -134,6 +135,7 @@ function IntroContent({ anim }: { anim: any }) {
         return (
           <FocusableImage
             {...image}
+            index={index}
             isFocused={imageFocus.image === index}
             variant={imageFocus.anim}
             onMouseEnter={() => imageFocusEnter(index)}

@@ -36,7 +36,7 @@ export default function Onboarding() {
           setImageAnimate("hide");
         }
       },
-      onboardingDuration * 0.7 * 1000,
+      onboardingDuration * 0.85 * 1000,
     );
 
     return () => {

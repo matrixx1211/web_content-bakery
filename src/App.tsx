@@ -38,8 +38,9 @@ export default function App() {
     <Onboarding />
   ) : (
     <>
-      {window.innerWidth <= 1536 ? (
-        <>{/*<MobileIntro />*/}</>
+      {/*TODO: Change if mobile version is ready for production*/}
+      {false && window.innerWidth <= 1536 ? (
+        <>{/*<MobileIntro />*/}WIP</>
       ) : (
         <>
           <Cursor />
