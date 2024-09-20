@@ -236,27 +236,36 @@ export const AnimCfg = {
                 },
                 afterLoad: {
                   y: [0],
-                  color: "#fff",
+                  color: ["#000", "#fff"],
                   textShadow: "0 0 0",
                   transition: { duration: 0 },
                 },
                 default: {
                   y: [0],
-                  color: "#fff",
-                  textShadow: "0 0 0",
+                  color: ["#000", "#fff"],
+                  textShadow: "0 0 0.2rem transparent, 0 0 0.2rem transparent, 0 0 0.2rem transparent, 0 0 0.2rem transparent",
                   transition: {
                     type: "spring",
-                    duration: textDuration,
+                    duration: textDuration * 3,
+                  },
+                },
+                unfocused: {
+                  y: [0],
+                  color: ["#000", "#fff"],
+                  textShadow: "0 0 0.2rem transparent, 0 0 0.2rem transparent, 0 0 0.2rem transparent, 0 0 0.2rem transparent",
+                  transition: {
+                    type: "spring",
+                    duration: textDuration * 1.3,
                   },
                 },
                 focus: {
                   y: [0],
-                  color: "#000",
+                  color: ["#fff", "#000"],
                   textShadow: "0 0 0.2rem white, 0 0 0.2rem white, 0 0 0.2rem white, 0 0 0.2rem white",
-                  overflow: "visible",
+                  overflow: ["visible"],
                   transition: {
                     type: "spring",
-                    duration: textDuration,
+                    duration: textDuration * 1.3,
                   },
                 },
               },
