@@ -144,7 +144,7 @@ function IntroContent({ anim }: { anim: any }) {
         );
       })}
 
-      <Circle id="Before-DesktopWhoWeAre" anim={AnimCfg.general.circle(false)} />
+      <Circle id="Before-DesktopWhoWeAre" anim={AnimCfg.general.circle(true)} />
     </>
   );
 }

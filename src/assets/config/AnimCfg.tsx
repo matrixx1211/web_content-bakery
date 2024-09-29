@@ -53,6 +53,34 @@ export const onboardingDuration = 3;
 
 export const AnimCfg = {
   general: {
+    onboarding: {
+      div: {
+        variants: {
+          loading: {
+            display: "flex",
+            transition: { duration: onboardingDuration * 0.5 },
+          },
+          hide: {
+            display: "none",
+            opacity: [1, 0],
+            transition: { duration: onboardingDuration * 0.3 },
+          },
+        },
+      },
+      image: {
+        variants: {
+          loading: {
+            opacity: [0, 1],
+            transition: { delay: onboardingDuration * 0.1, duration: onboardingDuration * 0.4 },
+          },
+          hide: {
+            opacity: [1, 0],
+            transition: { duration: onboardingDuration * 0.3 },
+          },
+        },
+      },
+    },
+
     header: (applySectionDelay: boolean) => {
       return {
         headerContainer: {
@@ -307,11 +335,21 @@ export const AnimCfg = {
         bigLines: {
           line: (index: any) => {
             return {
-              animate: { y: [55, 0] },
-              transition: {
-                type: "spring",
-                duration: textDuration,
-                delay: textDelay + index * 0.1 + sectionDelay,
+              variants: {
+                initial: {
+                  y: [55, 0],
+                  transition: {
+                    type: "spring",
+                    duration: textDuration,
+                    delay: textDelay + index * 0.1 + sectionDelay,
+                  },
+                },
+                afterLoad: {
+                  y: [0],
+                  transition: {
+                    duration: 0,
+                  },
+                },
               },
             };
           },
@@ -329,11 +367,19 @@ export const AnimCfg = {
         smallLines: {
           line: (index: any) => {
             return {
-              animate: { y: [26, 0] },
-              transition: {
-                type: "spring",
-                duration: textDuration,
-                delay: textDelay + index * 0.1 + sectionDelay,
+              variants: {
+                initial: {
+                  y: [26, 0],
+                  transition: {
+                    type: "spring",
+                    duration: textDuration,
+                    delay: textDelay + index * 0.1 + sectionDelay,
+                  },
+                },
+                afterLoad: {
+                  y: [0],
+                  transition: { duration: 0 },
+                },
               },
             };
           },
@@ -426,11 +472,19 @@ export const AnimCfg = {
         bigLines: {
           line: (index: any) => {
             return {
-              animate: { y: [55, 0] },
-              transition: {
-                type: "spring",
-                duration: textDuration,
-                delay: textDelay + index * 0.1 + sectionDelay,
+              variants: {
+                initial: {
+                  y: [55, 0],
+                  transition: {
+                    type: "spring",
+                    duration: textDuration,
+                    delay: textDelay + index * 0.1 + sectionDelay,
+                  },
+                },
+                afterLoad: {
+                  y: [0],
+                  transition: { duration: 0 },
+                },
               },
             };
           },
@@ -448,11 +502,19 @@ export const AnimCfg = {
         smallLines: {
           line: (index: any) => {
             return {
-              animate: { y: [25, 0] },
-              transition: {
-                type: "spring",
-                duration: textDuration,
-                delay: textDelay + index * 0.1 + sectionDelay,
+              variants: {
+                initial: {
+                  y: [25, 0],
+                  transition: {
+                    type: "spring",
+                    duration: textDuration,
+                    delay: textDelay + index * 0.1 + sectionDelay,
+                  },
+                },
+                afterLoad: {
+                  y: [0],
+                  transition: { duration: 0 },
+                },
               },
             };
           },
@@ -545,11 +607,19 @@ export const AnimCfg = {
         topLines: {
           line: (index: any) => {
             return {
-              animate: { y: [65, 0] },
-              transition: {
-                type: "spring",
-                duration: textDuration,
-                delay: textDelay + index * 0.1 + sectionDelay,
+              variants: {
+                initial: {
+                  y: [80, 0],
+                  transition: {
+                    type: "spring",
+                    duration: textDuration,
+                    delay: textDelay + index * 0.1 + sectionDelay,
+                  },
+                },
+                afterLoad: {
+                  y: [0],
+                  transition: { duration: 0 },
+                },
               },
             };
           },
@@ -557,11 +627,19 @@ export const AnimCfg = {
         bottomLines: {
           line: (index: any) => {
             return {
-              animate: { y: [65, 0] },
-              transition: {
-                type: "spring",
-                duration: textDuration,
-                delay: textDelay + (index + 5) * 0.1 + sectionDelay,
+              variants: {
+                initial: {
+                  y: [80, 0],
+                  transition: {
+                    type: "spring",
+                    duration: textDuration,
+                    delay: textDelay + (index + 5) * 0.1 + sectionDelay,
+                  },
+                },
+                afterLoad: {
+                  y: [0],
+                  transition: { duration: 0 },
+                },
               },
             };
           },

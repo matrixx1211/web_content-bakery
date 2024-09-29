@@ -6,28 +6,38 @@ import { useRef } from "react";
 import { useInView } from "framer-motion";
 import Lines from "../../../lines/Lines.tsx";
 
-export default function DesktopContact() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+function ContactContent({ anim }: { anim: any }) {
   const topLines = ["WANT TO TAKE", "ADVANTAGE OF", "OUR SKILLS", "AND TOOLS?"];
   const bottomLines = ["JUST SEND US", "AN "];
 
-  function ContactContent({ anim }: { anim: any }) {
-    return (
-      <>
-        <div className={style.linesContainer}>
-          <Lines lines={topLines} anim={anim ? anim.topLines : null} style={style} />
-          <Lines
-            lines={bottomLines}
-            anim={anim ? anim.bottomLines : null}
-            style={style}
-            customLines={[{ index: 1, childAfter: <a className={style.email} href="mailto:info@contentbakery.cz">E-MAIL.</a> }]}
-          />
-        </div>
-        <div></div>
-      </>
-    );
-  }
+  return (
+    <>
+      <div className={style.linesContainer}>
+        <Lines lines={topLines} anim={anim ? anim.topLines : null} style={style} />
+        <Lines
+          lines={bottomLines}
+          anim={anim ? anim.bottomLines : null}
+          style={style}
+          customLines={[
+            {
+              index: 1,
+              childAfter: (
+                <a className={style.email} href="mailto:info@contentbakery.cz">
+                  E-MAIL.
+                </a>
+              ),
+            },
+          ]}
+        />
+      </div>
+      <div className={style.spacer}></div>
+    </>
+  );
+}
+
+export default function DesktopContact() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
 
   return (
     <section id="DesktopContact" className={`${style.contentContainer} contentContainer`} ref={ref}>

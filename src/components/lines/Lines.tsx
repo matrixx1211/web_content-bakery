@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 /**
@@ -22,10 +22,19 @@ export default function Lines({
   className?: string;
   customLines?: { index: number; childBefore?: ReactNode; childAfter?: ReactNode }[];
 }) {
+  const [animate, setAnimate] = useState("initial");
+  useEffect(() => {
+    if (anim && anim.line(0).variants) {
+      const times = anim.line(lines.length - 1).variants.initial.transition;
+      const timeoutId = setTimeout(() => setAnimate("afterLoad"), (times.delay + times.duration) * 1000);
+      return () => clearTimeout(timeoutId);
+    }
+  }, [anim]);
+
   function Line({ text, index, customLine }: { text: string; index: number; customLine?: any }) {
     return (
       <div key={index}>
-        <motion.span {...(anim ? anim.line(index) : {})} className={style.lineText}>
+        <motion.span animate={animate} {...(anim ? anim.line(index) : {})} className={style.lineText}>
           {customLine ? <>{customLine.childBefore}</> : <></>}
           {text}
           {customLine ? <>{customLine.childAfter}</> : <></>}

@@ -27,12 +27,17 @@
 
       .lineText {
         font-size: 7rem;
-        transform: translateY(6.5rem);
+        transform: translateY(8rem);
         line-height: 8rem;
         letter-spacing: 0;
         display: inline-block;
         overflow: visible;
       }
     }
+  }
+
+  .spacer {
+    height: 16rem;
+    width: 100vw;
   }
 }

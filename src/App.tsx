@@ -38,7 +38,7 @@ export default function App() {
     <Onboarding />
   ) : (
     <>
-      {window.innerWidth <= 1536 ? (
+      {false && window.innerWidth <= 1536 ? (
         <>{/*<MobileIntro />*/}</>
       ) : (
         <>
