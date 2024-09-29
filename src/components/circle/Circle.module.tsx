@@ -47,7 +47,6 @@ export default function Circle({ id, anim, dark = false }: { id: string; anim: a
     }
   };
 
-  /* TODO: Možná nepoužívat ref, ale použít vlastní hranice z ref */
   const reset = () => {
     circle.x1.set(0);
     circle.y1.set(0);
@@ -58,12 +57,7 @@ export default function Circle({ id, anim, dark = false }: { id: string; anim: a
   };
 
   return (
-    <motion.div
-      className={style.circlesContainer}
-      onMouseMove={handleMouse}
-      onMouseLeave={reset}
-      {...(anim ? anim.circleContainer : {})}
-    >
+    <motion.div className={style.circlesContainer} onMouseMove={handleMouse} onMouseLeave={reset} {...(anim ? anim.circleContainer : {})}>
       <a
         onClick={(e: MouseEvent) => {
           scrollToElementWithId(e, id);
