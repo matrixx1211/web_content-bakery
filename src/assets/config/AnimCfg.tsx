@@ -793,16 +793,22 @@ export const AnimCfg = {
         lines: {
           line: (index: any) => {
             return {
-              animate: {
-                y: [48, 0],
-                color: "#fff",
-                textShadow: "0 0 0",
-                z: 1,
-              },
-              transition: {
-                type: "spring",
-                duration: textDuration,
-                delay: textDelay + index * 0.1,
+              variants: {
+                initial: {
+                  y: [48, 0],
+                  color: "#fff",
+                  textShadow: "0 0 0",
+                  z: 1,
+                  transition: {
+                    type: "spring",
+                    duration: textDuration,
+                    delay: textDelay + index * 0.1,
+                  },
+                },
+                afterLoad: {
+                  y: [0],
+                  transition: { duration: 0 },
+                }
               },
             };
           },
@@ -891,7 +897,7 @@ export const AnimCfg = {
         linesWithDetail: {
           detailImage: {
             animate: { opacity: [0, 1] },
-            transition: { duration: imagesDuration * 2.5, delay: (sectionDelay * 0.3) + textDelay },
+            transition: { duration: imagesDuration * 2.5, delay: sectionDelay * 0.3 + textDelay },
           },
           smallLines: {
             line: (index: any) => {
@@ -902,7 +908,7 @@ export const AnimCfg = {
                     transition: {
                       type: "spring",
                       duration: textDuration,
-                      delay: textDelay + index * 0.1 + (sectionDelay * 0.3),
+                      delay: textDelay + index * 0.1 + sectionDelay * 0.3,
                     },
                   },
                   afterLoad: {
@@ -923,7 +929,7 @@ export const AnimCfg = {
             },
             transition: {
               duration: textDuration * 0.4,
-              delay: textDelay + (sectionDelay * 0.3),
+              delay: textDelay + sectionDelay * 0.3,
             },
           },
         },
