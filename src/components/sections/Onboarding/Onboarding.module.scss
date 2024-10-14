@@ -15,8 +15,14 @@
 }
 
 .loader {
-  width: 13vw;
+  width: 13rem;
   aspect-ratio: 1;
   margin: auto;
   object-fit: contain;
+}
+
+@media screen and (min-width: 1536px) {
+  .loader {
+    width: 20rem;
+  }
 }

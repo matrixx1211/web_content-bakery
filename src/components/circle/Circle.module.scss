@@ -1,11 +1,19 @@
 @import "src/App";
 
+@media screen and (min-width: 1536px) {
+  .circlesContainer {
+    margin: var(--spacing-double) auto;
+  }
+}
+
 .circlesContainer {
   @include flexCenter;
   width: calc(var(--circle-size) * 2);
   height: calc(var(--circle-size) * 2);
-  overflow: visible;
+  overflow: visible !important;
   cursor: none;
+  margin-top: var(--spacing-double);
+  margin-bottom: calc(2.5 * var(--spacing-double));
 
   .centerContainer {
     width: var(--circle-size);
@@ -36,10 +44,12 @@
       width: 100%;
       height: 100%;
       position: absolute;
+      overflow: visible;
 
       .icon {
-        width: 50%;
+        width: 33%;
         margin: auto;
+        overflow: visible;
       }
     }
   }

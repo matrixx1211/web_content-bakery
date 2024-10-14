@@ -1,4 +1,4 @@
-@import "../../../../App";
+@import "src/App";
 
 .contentContainer {
   display: flex;
@@ -37,7 +37,7 @@
   }
 
   .spacer {
-    height: 16rem;
+    height: 12rem;
     width: 100vw;
   }
 }

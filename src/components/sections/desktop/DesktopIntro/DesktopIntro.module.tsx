@@ -1,15 +1,15 @@
 import style from "./DesktopIntro.module.scss";
-import Header from "../../../header/Header.module.tsx";
 import Circle from "../../../circle/Circle.module.tsx";
-import Navigation from "../../../navigation/Navigation.module.tsx";
+import DesktopHeader from "../../../sections/desktop/components/desktopHeader/DesktopHeader.module.tsx";
+import Navigation from "../../../sections/desktop/components/desktopNavigation/DesktopNavigation.module.tsx";
 import PageNumber from "../../../pagenumber/PageNumber.tsx";
 import { AnimCfg } from "../../../../assets/config/AnimCfg.tsx";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import notino from "../../../../assets/images/notino.jpg";
 import livestreaming from "../../../../assets/images/livestreaming.jpg";
 import richly from "../../../../assets/images/richly.jpg";
 import kresleni from "../../../../assets/images/kresleni.jpg";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 type FocusableImageType = {
   src: string;
@@ -66,7 +66,7 @@ function FocusableLines({ imageFocus, anim }: { imageFocus: any; anim: any }) {
 
   function Line({ text, index }: { text: string; index: number }) {
     return (
-      <div>
+      <div style={{overflow:"hidden"}}>
         <motion.span animate={imageFocus.anim} {...(anim ? anim.line(index) : {})} className={style.introTextLine}>
           {text}
         </motion.span>
@@ -94,7 +94,7 @@ function IntroContent({ anim }: { anim: any }) {
       clearTimeout(timeoutIdLeave);
       timeoutIdEnter = setTimeout(() => {
         setImageFocus({ anim: "focus", image: index });
-      }, 50);
+      }, 150);
     }
   };
   const imageFocusLeave = () => {
@@ -150,12 +150,15 @@ function IntroContent({ anim }: { anim: any }) {
 }
 
 export default function DesktopIntro() {
-  return (
-    <section id="DesktopIntro" className={style.contentContainer + " contentContainer"}>
-      <Header onlyActive={false} anim={AnimCfg.general.header(true)} />
-      <Navigation onlyActive={false} anim={AnimCfg.general.navigation(true)} activePage={1} />
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
 
-      <IntroContent anim={AnimCfg.desktop.intro.introContent} />
+  return (
+    <section id="DesktopIntro" className={style.contentContainer + " contentContainer"} ref={ref}>
+      <DesktopHeader onlyActive={false} anim={isInView ? AnimCfg.desktop.general.header(true) : null} />
+      <Navigation onlyActive={false} anim={isInView ? AnimCfg.desktop.general.navigation(true) : null} activePage={1} />
+
+      <IntroContent anim={isInView ? AnimCfg.desktop.intro.introContent : null} />
     </section>
   );
 }

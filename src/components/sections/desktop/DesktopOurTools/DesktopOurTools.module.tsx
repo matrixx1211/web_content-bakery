@@ -1,6 +1,6 @@
 import style from "./DesktopOurTools.module.scss";
-import Header from "../../../header/Header.module.tsx";
-import Navigation from "../../../navigation/Navigation.module.tsx";
+import DesktopHeader from "../../../sections/desktop/components/desktopHeader/DesktopHeader.module.tsx";
+import Navigation from "../../../sections/desktop/components/desktopNavigation/DesktopNavigation.module.tsx";
 import Circle from "../../../circle/Circle.module.tsx";
 import { AnimCfg } from "../../../../assets/config/AnimCfg.tsx";
 import PageNumber from "../../../pagenumber/PageNumber.tsx";
@@ -36,10 +36,10 @@ export default function DesktopOurTools() {
 
   return (
     <section id="DesktopOurTools" className={`${style.contentContainer} contentContainer`} ref={ref}>
-      <Header onlyActive={true} anim={isInView ? AnimCfg.general.header(true) : null} dark={true} />
+      <DesktopHeader onlyActive={true} anim={isInView ? AnimCfg.desktop.general.header(true) : null} dark={true} />
       <Navigation
         onlyActive={true}
-        anim={isInView ? AnimCfg.general.navigation(true) : null}
+        anim={isInView ? AnimCfg.desktop.general.navigation(true) : null}
         activePage={4}
         dark={true}
       />

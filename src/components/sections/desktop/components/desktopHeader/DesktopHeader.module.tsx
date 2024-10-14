@@ -1,11 +1,11 @@
-import style from "./Header.module.scss";
-import logoWithText from "../../assets/images/LogoWithText.svg";
-import logo from "../../assets/images/Logo.svg";
-import logoDark from "../../assets/images/LogoDark.svg";
+import style from "./DesktopHeader.module.scss";
+import logoWithText from "../../../../../assets/images/LogoWithText.svg";
+import logo from "../../../../../assets/images/Logo.svg";
+import logoDark from "../../../../../assets/images/LogoDark.svg";
 import { motion } from "framer-motion";
-import { scrollToElementWithId } from "../helpers/Helpers.tsx";
+import { scrollToElementWithId } from "../../../../helpers/Helpers.tsx";
 
-export default function Header({
+export default function DesktopHeader({
   dark = false,
   onlyActive,
   anim,

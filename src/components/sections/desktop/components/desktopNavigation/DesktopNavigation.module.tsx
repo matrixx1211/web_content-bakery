@@ -1,7 +1,7 @@
-import style from "./Navigation.module.scss";
+import style from "./DesktopNavigation.module.scss";
 import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
-import { scrollToElementWithId } from "../helpers/Helpers.tsx";
+import { scrollToElementWithId } from "../../../../helpers/Helpers.tsx";
 import { MouseEvent, useEffect, useState } from "react";
 
 const navItems = [

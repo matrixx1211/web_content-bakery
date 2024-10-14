@@ -5,7 +5,19 @@ import { motion } from "framer-motion";
 import { MouseEvent } from "react";
 import { scrollToElementWithId } from "../helpers/Helpers.tsx";
 
-export default function Circle({ id, anim, dark = false }: { id: string; anim: any; dark?: boolean }) {
+export default function Circle({
+  id,
+  anim,
+  dark = false,
+  direction = "down",
+  onClick,
+}: {
+  id?: string;
+  anim: any;
+  dark?: boolean;
+  direction?: "up" | "down" | "left" | "right";
+  onClick?: () => void;
+}) {
   const [mouse, ref]: [mouse: MousePosition, ref: any] = useMouse();
 
   const circle = {
@@ -31,6 +43,8 @@ export default function Circle({ id, anim, dark = false }: { id: string; anim: a
   };
 
   const handleMouse = () => {
+    if (window.innerWidth < 1536) return;
+
     const halfSize = 44;
     if (
       mouse.elementX <= halfSize * 2 * 2 &&
@@ -48,6 +62,8 @@ export default function Circle({ id, anim, dark = false }: { id: string; anim: a
   };
 
   const reset = () => {
+    if (window.innerWidth < 1536) return;
+
     circle.x1.set(0);
     circle.y1.set(0);
     circle.x2.set(0);
@@ -55,29 +71,91 @@ export default function Circle({ id, anim, dark = false }: { id: string; anim: a
     circle.x3.set(0);
     circle.y3.set(0);
   };
+  const rotationByDirection = () => {
+    if (direction === "down") return 0;
+    if (direction === "up") return 180;
+    if (direction === "left") return 0;
+    if (direction === "right") return 180;
+  };
 
   return (
     <motion.div className={style.circlesContainer} onMouseMove={handleMouse} onMouseLeave={reset} {...(anim ? anim.circleContainer : {})}>
-      <a
-        onClick={(e: MouseEvent) => {
-          scrollToElementWithId(e, id);
-        }}
-        href={"#" + id}
-        className={style.centerContainer}
-        ref={ref}
-      >
-        <motion.div className={dark ? style.circleDark : style.circle} {...(anim ? anim.circle1(circleSmooth) : {})}></motion.div>
-        <motion.div className={dark ? style.circleDark : style.circle} {...(anim ? anim.circle2(circleSmooth) : {})}></motion.div>
-        <motion.div className={style.iconContainer} {...(anim ? anim.iconContainer(circleSmooth) : {})}>
-          <svg className={style.icon} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25">
-            <motion.path
-              fill={dark ? "#000000" : "#ffffff"}
-              d="M12.5 18 2 7.707 2.707 7l9.793 9.586L22.293 7l.707.707L12.5 18z"
-              {...(anim ? anim.icon : {})}
-            />
-          </svg>
-        </motion.div>
-      </a>
+      {id ? (
+        <a
+          onClick={(e: MouseEvent) => {
+            scrollToElementWithId(e, id);
+          }}
+          href={"#" + id}
+          className={style.centerContainer}
+          ref={ref}
+        >
+          <motion.div className={dark ? style.circleDark : style.circle} {...(anim ? anim.circle1(circleSmooth) : {})}></motion.div>
+          <motion.div className={dark ? style.circleDark : style.circle} {...(anim ? anim.circle2(circleSmooth) : {})}></motion.div>
+          <motion.div className={style.iconContainer} {...(anim ? anim.iconContainer(circleSmooth) : {})}>
+            {direction === "up" || direction === "down" ? (
+              <motion.svg
+                className={style.icon}
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 25 25"
+                style={{ transform: `rotate(${rotationByDirection()}deg)` }}
+              >
+                <motion.path
+                  fill={dark ? "#000000" : "#ffffff"}
+                  d="M12.5 18 2 7.707 2.707 7l9.793 9.586L22.293 7l.707.707L12.5 18z"
+                  {...(anim ? anim.icon : {})}
+                />
+              </motion.svg>
+            ) : (
+              <motion.svg
+                className={style.icon}
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 25 25"
+                style={{ transform: `rotate(${rotationByDirection()}deg)` }}
+              >
+                <motion.path
+                  fill={dark ? "#000000" : "#ffffff"}
+                  d="M24 12.001H2.914l5.294-5.295-.707-.707L1 12.501l6.5 6.5.707-.707-5.293-5.293H24v-1z"
+                  {...(anim ? anim.icon : {})}
+                />
+              </motion.svg>
+            )}
+          </motion.div>
+        </a>
+      ) : (
+        <a onClick={onClick} className={style.centerContainer} ref={ref}>
+          <motion.div className={dark ? style.circleDark : style.circle} {...(anim ? anim.circle1(circleSmooth) : {})}></motion.div>
+          <motion.div className={dark ? style.circleDark : style.circle} {...(anim ? anim.circle2(circleSmooth) : {})}></motion.div>
+          <motion.div className={style.iconContainer} {...(anim ? anim.iconContainer(circleSmooth) : {})}>
+            {direction === "up" || direction === "down" ? (
+              <motion.svg
+                className={style.icon}
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 25 25"
+                style={{ transform: `rotate(${rotationByDirection()}deg)` }}
+              >
+                <motion.path
+                  fill={dark ? "#000000" : "#ffffff"}
+                  d="M12.5 18 2 7.707 2.707 7l9.793 9.586L22.293 7l.707.707L12.5 18z"
+                  {...(anim ? anim.icon : {})}
+                />
+              </motion.svg>
+            ) : (
+              <motion.svg
+                className={style.icon}
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 25 25"
+                style={{ transform: `rotate(${rotationByDirection()}deg)` }}
+              >
+                <motion.path
+                  fill={dark ? "#000000" : "#ffffff"}
+                  d="M24 12.001H2.914l5.294-5.295-.707-.707L1 12.501l6.5 6.5.707-.707-5.293-5.293H24v-1z"
+                  {...(anim ? anim.icon : {})}
+                />
+              </motion.svg>
+            )}
+          </motion.div>
+        </a>
+      )}
     </motion.div>
   );
 }

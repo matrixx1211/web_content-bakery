@@ -33,7 +33,7 @@ export default function Lines({
 
   function Line({ text, index, customLine }: { text: string; index: number; customLine?: any }) {
     return (
-      <div key={index}>
+      <div key={index} style={{overflow: "hidden"}}>
         <motion.span animate={animate} {...(anim ? anim.line(index) : {})} className={style.lineText}>
           {customLine ? <>{customLine.childBefore}</> : <></>}
           {text}

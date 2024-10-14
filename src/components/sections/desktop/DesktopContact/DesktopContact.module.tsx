@@ -1,6 +1,6 @@
 import style from "./DesktopContact.module.scss";
-import Header from "../../../header/Header.module.tsx";
-import Navigation from "../../../navigation/Navigation.module.tsx";
+import DesktopHeader from "../../../sections/desktop/components/desktopHeader/DesktopHeader.module.tsx";
+import Navigation from "../../../sections/desktop/components/desktopNavigation/DesktopNavigation.module.tsx";
 import { AnimCfg } from "../../../../assets/config/AnimCfg.tsx";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
@@ -41,8 +41,8 @@ export default function DesktopContact() {
 
   return (
     <section id="DesktopContact" className={`${style.contentContainer} contentContainer`} ref={ref}>
-      <Header onlyActive={true} anim={isInView ? AnimCfg.general.header(true) : null} />
-      <Navigation onlyActive={true} anim={isInView ? AnimCfg.general.navigation(true) : null} activePage={5} />
+      <DesktopHeader onlyActive={true} anim={isInView ? AnimCfg.desktop.general.header(true) : null} />
+      <Navigation onlyActive={true} anim={isInView ? AnimCfg.desktop.general.navigation(true) : null} activePage={5} />
 
       <ContactContent anim={isInView ? AnimCfg.desktop.contact.contactContent : null} />
     </section>

@@ -1,6 +1,6 @@
 import style from "./DesktopOurTools2.module.scss";
-import Header from "../../../header/Header.module.tsx";
-import Navigation from "../../../navigation/Navigation.module.tsx";
+import DesktopHeader from "../../../sections/desktop/components/desktopHeader/DesktopHeader.module.tsx";
+import Navigation from "../../../sections/desktop/components/desktopNavigation/DesktopNavigation.module.tsx";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
 import { AnimCfg } from "../../../../assets/config/AnimCfg.tsx";
@@ -54,8 +54,8 @@ export default function DesktopOurTools2() {
 
   return (
     <section id="DesktopOurTools2" className={`${style.contentContainer} contentContainer`} ref={ref}>
-      <Header onlyActive={true} anim={isInView ? AnimCfg.general.header(true) : null} dark={true}/>
-      <Navigation onlyActive={true} anim={isInView ? AnimCfg.general.navigation(true) : null} activePage={4} dark={true}/>
+      <DesktopHeader onlyActive={true} anim={isInView ? AnimCfg.desktop.general.header(true) : null} dark={true}/>
+      <Navigation onlyActive={true} anim={isInView ? AnimCfg.desktop.general.navigation(true) : null} activePage={4} dark={true}/>
 
       <OurTools2Content anim={isInView ? AnimCfg.desktop.ourTools2.ourTools2Content : null} />
     </section>

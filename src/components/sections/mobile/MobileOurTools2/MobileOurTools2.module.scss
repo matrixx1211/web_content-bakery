@@ -1,0 +1,83 @@
+@import "src/App";
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+
+  .linesOnSideContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 2rem;
+    overflow: scroll;
+    height: 200vh;
+
+    .bigLinesLeftText,
+    .smallLinesLeftText {
+      text-align: left;
+      justify-content: flex-start;
+      padding-right: 10%;
+    }
+
+    .bigLinesRightText,
+    .smallLinesRightText {
+      text-align: right;
+      justify-content: flex-end;
+      padding-left: 10%;
+    }
+
+    .bigLinesLeftText,
+    .bigLinesRightText {
+      @include nimbus900;
+      display: flex;
+      flex-direction: column;
+      overflow: visible;
+      margin-inline: 2rem;
+
+      .wordWrapper {
+        display: inline-block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: calc(100vw - 4rem);
+      }
+
+      .lineText {
+        font-size: 5.4rem;
+        line-height: 4.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0;
+        display: inline-block;
+        overflow: visible;
+      }
+    }
+
+    .smallLinesLeftText,
+    .smallLinesRightText {
+      @include area400;
+      display: flex;
+      flex-direction: column;
+      overflow: visible;
+      margin-inline: 2rem;
+
+      .wordWrapper {
+        display: inline-block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: calc(100vw - (calc(2 * var(--spacing-full))));
+      }
+
+      .lineText {
+        font-size: 1.4rem;
+        line-height: 1.8rem;
+        letter-spacing: 0;
+        display: inline-block;
+        overflow: visible;
+      }
+    }
+  }
+}

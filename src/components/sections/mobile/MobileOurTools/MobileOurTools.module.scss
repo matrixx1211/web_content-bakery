@@ -1,0 +1,91 @@
+@import "src/App";
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    width: 100%;
+    gap: var(--spacing-double);
+    overflow: scroll;
+
+    .bigLinesText {
+      @include nimbus900;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      overflow: visible;
+      margin-inline: var(--spacing-full);
+      text-align: right;
+      z-index: 1;
+      pointer-events: none;
+
+      .wordWrapper {
+        display: inline-block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: calc(100vw - (calc(2 * var(--spacing-full))));
+      }
+
+      .lineText {
+        font-size: 3.8rem;
+        line-height: 4.4rem;
+        transform: translateY(4.4rem);
+        letter-spacing: 0;
+        display: inline-block;
+        overflow: visible;
+      }
+    }
+
+    .pageIndicator {
+      @include area600;
+      border-bottom: 0.1rem solid;
+      z-index: 10;
+      overflow: visible;
+      font-size: 1.6rem;
+      width: 0;
+
+      .pageNumber {
+        float: right;
+        overflow: visible;
+        padding-bottom: var(--spacing-quarter);
+      }
+    }
+
+    .smallLinesText {
+      @include area400;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      overflow: visible;
+      margin-inline: var(--spacing-full);
+      text-align: right;
+
+      .wordWrapper {
+        display: inline-block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: calc(100vw - (calc(2 * var(--spacing-full))));
+      }
+
+      .lineText {
+        font-size: 1.7rem;
+        line-height: 2.6rem;
+        transform: translateY(2.6rem);
+        letter-spacing: 0;
+        display: inline-block;
+        word-break: break-word;
+      }
+    }
+  }
+}

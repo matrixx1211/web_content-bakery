@@ -1,11 +1,11 @@
-import style from "./DesktopTransition.module.scss";
+import style from "./Transition.module.scss";
 import { useLocation } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { scrollToElementWithId } from "../../../helpers/Helpers.tsx";
 import { motion, useInView } from "framer-motion";
 import { AnimCfg } from "../../../../assets/config/AnimCfg.tsx";
 
-export default function DesktopTransition({
+export default function Transition({
   toId,
   pageTitle,
   pageNumber,
@@ -44,10 +44,9 @@ export default function DesktopTransition({
       };
     }
   }, [id, location]);
-
   return (
     <section id={toId} className={`${style.transitionContainer} transitionContainer`} ref={ref}>
-      <motion.div className={style.transitionText} {...(isInView ? anim.transitionText(animState) : {})}>
+      <motion.div className={style.transitionText} animate={animState} {...(isInView ? anim.transitionText : {})}>
         <span className={style.pageNumber}>{pageNumber}</span>
         <span className={style.pageTitle}> {pageTitle}</span>
       </motion.div>

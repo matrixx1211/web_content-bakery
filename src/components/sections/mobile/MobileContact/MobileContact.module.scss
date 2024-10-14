@@ -1,0 +1,52 @@
+@import "src/App";
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+
+  .linesContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 5.5rem;
+    overflow: scroll;
+
+    .email {
+      color: var(--content-text-color);
+    }
+
+    .linesText {
+      @include nimbus900;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: visible;
+      margin-inline: 2rem;
+      text-align: center;
+
+      .wordWrapper {
+        display: inline-block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: calc(100vw - (calc(2 * var(--spacing-full))));
+      }
+
+      .lineText {
+        font-size: 3.8rem;
+        line-height: 4.4rem;
+        letter-spacing: 0;
+        display: inline-block;
+        overflow: visible;
+      }
+    }
+  }
+
+  .spacer {
+    height: 12rem;
+    width: 100vw;
+  }
+}

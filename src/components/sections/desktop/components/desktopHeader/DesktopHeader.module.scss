@@ -2,7 +2,7 @@
 
 .headerContainer {
   @include area400;
-  height: var(--header-height);
+  height: var(--desktop-header-height);
   width: 100vw;
   z-index: 10;
   display: flex;

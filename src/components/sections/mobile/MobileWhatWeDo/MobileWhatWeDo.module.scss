@@ -1,0 +1,172 @@
+@import "src/App";
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+
+  .linesContainer {
+    display: flex;
+    gap: 5rem;
+    flex-direction: column;
+    overflow: scroll;
+    padding: 1rem 0;
+    height: 200vh;
+
+    .lineContainer {
+      @include nimbus900;
+      display: flex;
+      position: relative;
+      min-height: 15rem;
+      justify-content: center;
+      align-items: center;
+
+      .lineTextLeftContainer,
+      .lineTextRightContainer {
+        overflow: hidden;
+        z-index: 20;
+        display: inline-block;
+        width: 100%;
+        word-break: break-word;
+      }
+
+      .lineTextLeftContainer {
+        text-align: right;
+      }
+      .lineTextRightContainer {
+        text-align: left;
+      }
+
+      .characterContainer {
+        display: inline-block;
+        overflow: hidden;
+      }
+
+      .lineText {
+        font-size: 5rem;
+        line-height: 6rem;
+        letter-spacing: 0;
+        display: inline-block;
+        overflow: hidden;
+      }
+
+      .lineImageLeft {
+        object-fit: fill;
+        aspect-ratio: 3/2;
+        width: 24rem;
+        position: absolute;
+        left: 0;
+        z-index: 10;
+        opacity: 0;
+        overflow: hidden;
+      }
+
+      .lineImageRight {
+        object-fit: contain;
+        aspect-ratio: 3/2;
+        width: 24rem;
+        position: absolute;
+        right: 0;
+        z-index: 10;
+        opacity: 0;
+        overflow: hidden;
+      }
+    }
+  }
+
+  .detailContainer {
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: calc(100vh - 6.4rem);
+    top: 6.4rem;
+    background-color: var(--content-background);
+    z-index: 30;
+    transform: translateX(100vw);
+    padding-top: 3rem;
+    overflow: scroll;
+
+    .detailContentContainer {
+      @include nimbus900;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      word-wrap: break-word;
+
+      .lineTextContainer {
+        overflow: hidden;
+        word-break: break-word;
+
+        .characterContainer {
+          display: inline-block;
+          overflow: hidden;
+
+          .lineText {
+            font-size: 5rem;
+            line-height: 6rem;
+            letter-spacing: 0;
+            display: inline-block;
+            overflow: hidden;
+          }
+        }
+      }
+    }
+
+    .detailTitle {
+      @include nimbus900;
+      padding-inline: 2rem;
+      font-size: 5rem;
+      line-height: 5.5rem;
+    }
+
+    .smallLinesText {
+      @include area400;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      overflow: visible;
+      margin-inline: 2rem;
+      z-index: 1;
+
+      .wordWrapper {
+        display: inline-block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: calc(100vw - (calc(2 * var(--spacing-full))));
+      }
+
+      .lineText {
+        font-size: 1.8rem;
+        line-height: 2.6rem;
+        letter-spacing: 0;
+        display: inline-block;
+        overflow: visible;
+      }
+    }
+
+    .detailImage {
+    }
+
+    .detailText {
+      @include area400;
+      padding-inline: 2rem;
+      font-size: 1.8rem;
+      line-height: 2.8rem;
+    }
+  }
+
+  .pageIndicator {
+    @include area600;
+    font-size: 3.2rem;
+    transform: translate(-1rem);
+    display: inline-block;
+
+    .pageNumber {
+      padding-bottom: var(--spacing-quarter);
+    }
+  }
+}

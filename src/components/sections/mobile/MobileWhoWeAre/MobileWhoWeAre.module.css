@@ -5,9 +5,14 @@
   padding: 0;
   box-sizing: border-box;
   overflow: hidden;
-  cursor: none;
+  cursor: auto;
 }
 
+@media screen and (min-width: 1536px) {
+  * {
+    cursor: none;
+  }
+}
 html {
   font-size: 10px;
 }
@@ -36,7 +41,8 @@ body {
   --spacing-full: 1.6rem;
   --spacing-half: 0.8rem;
   --spacing-quarter: 0.4rem;
-  --header-height: 6.4rem;
+  --desktop-header-height: 6.4rem;
+  --mobile-header-height: 4.8rem;
   --nav-y-offset: 10rem;
   --border-radius: 0.8rem;
   --cursor-width: 2.4rem;
@@ -72,9 +78,15 @@ body {
 section {
   width: calc(100vw + 0.1rem);
   height: calc(100vh + 0.1rem);
-  overflow: visible;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
+@media screen and (min-width: 1536px) {
+  section {
+    overflow: visible;
+  }
+}
 .contentContainer {
   background-color: var(--content-background);
   color: var(--content-text-color);
@@ -87,25 +99,71 @@ section {
 }
 
 /* MIXINY */
-.transitionContainer {
+.contentContainer {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+  position: relative;
 }
-.transitionContainer .pageNumber {
-  font-size: 3.2rem;
-  line-height: 6.4rem;
-  padding: 3.2rem 1.6rem 0 0;
-  font-family: area-normal, sans-serif;
-  font-weight: 600;
-  font-style: normal;
+.contentContainer .content {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  width: 80%;
+  gap: var(--spacing-double);
 }
-.transitionContainer .pageTitle {
-  font-size: 6.4rem;
-  line-height: 6.4rem;
+.contentContainer .content .bigLinesText {
   font-family: "nimbus-sans-extended", sans-serif;
   font-weight: 900;
   font-style: normal;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  overflow: visible;
+  margin-right: calc(var(--spacing-double) * 1.5);
+}
+.contentContainer .content .bigLinesText .lineText {
+  font-size: 7rem;
+  line-height: 5.5rem;
+  transform: translateY(5.5rem);
+  letter-spacing: 0;
+  display: inline-block;
+  overflow: visible;
+}
+.contentContainer .content .pageIndicator {
+  font-family: area-normal, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  border-bottom: 0.1rem solid;
+  z-index: 10;
+  overflow: visible;
+  font-size: 1.6rem;
+  width: 0;
+}
+.contentContainer .content .pageIndicator .pageNumber {
+  float: right;
+  overflow: visible;
+  padding-bottom: var(--spacing-quarter);
+}
+.contentContainer .content .smallLinesText {
+  font-family: area-normal, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  overflow: visible;
+  margin-right: calc(var(--spacing-double) * 1.5);
+}
+.contentContainer .content .smallLinesText .lineText {
+  font-size: 1.7rem;
+  line-height: 2.6rem;
+  transform: translateY(2.6rem);
+  letter-spacing: 0;
+  display: inline-block;
 }
 
-/*# sourceMappingURL=DesktopTransition.module.css.map */
+/*# sourceMappingURL=DesktopWhoWeAre.module.css.map */
