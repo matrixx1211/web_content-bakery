@@ -13,7 +13,7 @@
     flex-direction: column;
     overflow: scroll;
     padding: 1rem 0;
-    height: 200vh;
+    height: 200dvh;
 
     .lineContainer {
       @include nimbus900;
@@ -34,19 +34,30 @@
 
       .lineTextLeftContainer {
         text-align: right;
+        .wordContainer {
+          justify-content: flex-end;
+        }
       }
       .lineTextRightContainer {
         text-align: left;
+        .wordContainer {
+          justify-content: flex-start;
+        }
       }
 
+      .wordContainer {
+        display: inline-flex;
+        flex-wrap: wrap;
+      }
       .characterContainer {
         display: inline-block;
         overflow: hidden;
       }
 
       .lineText {
-        font-size: 5rem;
-        line-height: 6rem;
+        font-size: 4.2rem;
+        line-height: 4.0rem;
+        transform: translateY(4.2rem);
         letter-spacing: 0;
         display: inline-block;
         overflow: hidden;
@@ -80,8 +91,10 @@
     display: none;
     position: fixed;
     width: 100vw;
-    height: calc(100vh - 6.4rem);
-    top: 6.4rem;
+    height: calc(100dvh - 9.2rem);
+    top: 9.2rem;
+    left: 0;
+    right: 0;
     background-color: var(--content-background);
     z-index: 30;
     transform: translateX(100vw);
@@ -104,8 +117,8 @@
           overflow: hidden;
 
           .lineText {
-            font-size: 5rem;
-            line-height: 6rem;
+            font-size: 4.3rem;
+            line-height: 4.0rem;
             letter-spacing: 0;
             display: inline-block;
             overflow: hidden;

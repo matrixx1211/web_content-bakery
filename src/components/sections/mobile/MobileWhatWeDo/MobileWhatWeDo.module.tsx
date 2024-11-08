@@ -57,11 +57,21 @@ function LineWithDetail({ anim, data }: { anim: any; data: { title: string; imag
         <div className={style.lineContainer} onClick={toggleDetail}>
           <motion.img src={data.image} alt="" className={style.lineImageLeft} {...anim.lineImage} />
           <div className={style.lineTextLeftContainer}>
-            {data.title.split("").map((c, i) => (
-              <div className={style.characterContainer} key={i}>
-                <motion.span className={style.lineText} {...anim.line}>
-                  {c === " " ? "\u00A0" : c}
-                </motion.span>
+            {data.title.split(" ").map((line, index) => (
+              <div className={style.wordContainer} key={index}>
+                { index !== 0 && data.title.split(" ").length > 1 ? 
+                <div className={style.characterContainer}>
+                  <motion.span className={style.lineText} {...anim.line}>
+                    {"\u00A0"}
+                  </motion.span> </div> : null
+                }
+                {line.split("").map((c, i) => (
+                <div className={style.characterContainer} key={i}>
+                  <motion.span className={style.lineText} {...anim.line}>
+                    {c}
+                  </motion.span>
+                </div>
+                ))}
               </div>
             ))}
           </div>
@@ -70,13 +80,23 @@ function LineWithDetail({ anim, data }: { anim: any; data: { title: string; imag
         <div className={style.lineContainer} onClick={toggleDetail}>
           <motion.img src={data.image} alt="" className={style.lineImageRight} {...anim.lineImage} />
           <div className={style.lineTextRightContainer}>
-            {data.title.split("").map((c, i) => (
-              <div className={style.characterContainer} key={i}>
+          {data.title.split(" ").map((line, index) => (
+            <div className={style.wordContainer} key={index}>
+              {line.split("").map((c, i) => (
+                <div className={style.characterContainer} key={i}>
+                  <motion.span className={style.lineText} {...anim.line}>
+                    {c}
+                  </motion.span>
+                </div>
+              ))}
+              { data.title.split(" ").length - 1 !== index ? 
+              <div className={style.characterContainer}>
                 <motion.span className={style.lineText} {...anim.line}>
-                  {c === " " ? "\u00A0" : c}
-                </motion.span>
-              </div>
-            ))}
+                  {"\u00A0"}
+                </motion.span> </div> : null
+              }
+            </div>
+          ))}
           </div>
         </div>
       )}

@@ -37,11 +37,12 @@
       }
 
       .lineText {
-        font-size: 3.8rem;
-        line-height: 4.4rem;
+        font-size: 3.3rem;
+        line-height: 3.0rem;
         letter-spacing: 0;
         display: inline-block;
         overflow: visible;
+        transform: translateY(3.3rem);
       }
     }
 
@@ -84,6 +85,7 @@
         letter-spacing: 0;
         display: inline-block;
         word-break: break-word;
+        transform: translateY(2.6rem);
       }
     }
   }

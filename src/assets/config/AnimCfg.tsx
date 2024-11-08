@@ -218,12 +218,12 @@ export const AnimCfg = {
           variants: {
             hidden: {
               y: 0,
-              scale: 0.5,
+              //scale: 0.5,
               opacity: 0,
             },
             visible: {
               y: 0,
-              scale: 1.5,
+              //scale: 1.5,
               opacity: 1,
             },
           },

@@ -23,6 +23,7 @@ export default function Transition({
   const ref = useRef(null);
   const isInView = useInView(ref);
   useEffect(() => {
+    const isMobile = window.innerWidth < 1536;
     if (id && location && location.hash === id.replace("#", "#Before-")) {
       setAnimState("enter");
       const timeoutId1 = setTimeout(() => {
@@ -30,8 +31,8 @@ export default function Transition({
       }, 1500);
 
       const timeoutId2 = setTimeout(() => {
-        scrollToElementWithId(null, id, 1000);
-      }, 2000);
+        scrollToElementWithId(null, id, isMobile ? 1200 : 1000);
+      }, isMobile ? 1600 : 2000);
 
       const timeoutId3 = setTimeout(() => {
         setAnimState("enter");

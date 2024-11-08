@@ -144,7 +144,7 @@ export default function Circle({
                 className={style.icon}
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 25 25"
-                style={{ transform: `rotate(${rotationByDirection()}deg)` }}
+                style={{ transform: `rotate(${rotationByDirection()}deg)`, width: "50%" }}
               >
                 <motion.path
                   fill={dark ? "#000000" : "#ffffff"}

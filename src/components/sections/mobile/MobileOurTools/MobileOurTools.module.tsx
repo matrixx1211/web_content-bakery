@@ -8,7 +8,7 @@ import MobileNavigation from "../components/mobileNavigation/MobileNavigation.mo
 import LinesByLetter from "../../../linesByLetter/LinesByLetter.tsx";
 
 function OurToolsContent({ anim }: { anim: any }) {
-  const bigLines = ["OUR TOOLS", "THAT HELPS", "TO CREATE, SHARE", "AND ORGANIZE"];
+  const bigLines = ["OUR TOOLS", "THAT HELPS", "TO CREATE,", "SHARE AND ORGANIZE"];
 
   const smallLines = [
     "With our in-house tools we help you",

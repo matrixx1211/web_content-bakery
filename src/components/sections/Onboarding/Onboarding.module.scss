@@ -1,6 +1,6 @@
 .boardingContainer {
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
   position: absolute;
   display: none;
   justify-content: center;
@@ -13,14 +13,15 @@
 }
 
 .loader {
-  width: 13rem;
+  width: 26rem;
   aspect-ratio: 1;
   margin: auto;
   object-fit: contain;
+  max-width: 100%;
 }
 
 @media screen and (min-width: 1536px) {
   .loader {
-    width: 20rem;
+    width: 40rem;
   }
 }

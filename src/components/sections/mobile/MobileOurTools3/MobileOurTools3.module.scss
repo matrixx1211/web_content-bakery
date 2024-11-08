@@ -13,7 +13,7 @@
     width: 100%;
     gap: 2rem;
     overflow: scroll;
-    height: 200vh;
+    height: 200dvh;
 
     .bigLinesLeftText,
     .smallLinesLeftText {
@@ -46,12 +46,13 @@
       }
 
       .lineText {
-        font-size: 5.4rem;
-        line-height: 4.5rem;
+        font-size: 3.8rem;
+        line-height: 3.5rem;
         text-transform: uppercase;
         letter-spacing: 0;
         display: inline-block;
         overflow: visible;
+        transform: translateY(3.8rem);
       }
     }
 
@@ -77,6 +78,7 @@
         letter-spacing: 0;
         display: inline-block;
         overflow: visible;
+        transform: translateY(2.0rem);
       }
     }
   }
